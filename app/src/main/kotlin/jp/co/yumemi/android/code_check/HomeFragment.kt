@@ -11,22 +11,27 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.*
-import jp.co.yumemi.android.code_check.databinding.FragmentOneBinding
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import jp.co.yumemi.android.code_check.HomeFragmentDirections.Companion.actionRepositoriesFragmentToRepositoryFragment
+import jp.co.yumemi.android.code_check.databinding.FragmentHomeBinding
 
-class OneFragment: Fragment(R.layout.fragment_one){
+class HomeFragment: Fragment(R.layout.fragment_home){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
 
-        val _binding= FragmentOneBinding.bind(view)
+        val _binding= FragmentHomeBinding.bind(view)
 
-        val _viewModel= OneViewModel(context!!)
+        val _viewModel= HomeViewModel(requireContext()!!)
 
-        val _layoutManager= LinearLayoutManager(context!!)
+        val _layoutManager= LinearLayoutManager(requireContext()!!)
         val _dividerItemDecoration=
-            DividerItemDecoration(context!!, _layoutManager.orientation)
+            DividerItemDecoration(requireContext()!!, _layoutManager.orientation)
         val _adapter= CustomAdapter(object : CustomAdapter.OnItemClickListener{
             override fun itemClick(item: item){
                 gotoRepositoryFragment(item)
@@ -55,8 +60,7 @@ class OneFragment: Fragment(R.layout.fragment_one){
 
     fun gotoRepositoryFragment(item: item)
     {
-        val _action= OneFragmentDirections
-            .actionRepositoriesFragmentToRepositoryFragment(item= item)
+        val _action= actionRepositoriesFragmentToRepositoryFragment(item)
         findNavController().navigate(_action)
     }
 }
@@ -87,7 +91,7 @@ class CustomAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
     {
     	val _view= LayoutInflater.from(parent.context)
-            .inflate(R.layout.layout_item, parent, false)
+            .inflate(R.layout.layout_repo_list_item, parent, false)
     	return ViewHolder(_view)
     }
 
