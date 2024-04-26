@@ -22,11 +22,11 @@ import java.util.*
 
 
 class HomeViewModel(
-    val context: Context
+
 ) : ViewModel() {
 
 
-    fun searchResults(inputText: String): List<item> = runBlocking {
+    /*fun searchResults(inputText: String): List<item> = runBlocking {
         val client = HttpClient(Android)
 
         return@runBlocking GlobalScope.async {
@@ -69,16 +69,6 @@ class HomeViewModel(
 
             return@async items.toList()
         }.await()
-    }
+    }*/
 }
 
-@Parcelize
-data class item(
-    val name: String,
-    val ownerIconUrl: String,
-    val language: String,
-    val stargazersCount: Long,
-    val watchersCount: Long,
-    val forksCount: Long,
-    val openIssuesCount: Long,
-) : Parcelable

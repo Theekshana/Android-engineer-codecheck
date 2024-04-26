@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.databinding.FragmentHomeBinding
+import jp.co.yumemi.android.code_check.model.GitHubAccount
 import jp.co.yumemi.android.code_check.views.home.HomeFragmentDirections.Companion.actionRepositoriesFragmentToRepositoryFragment
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -26,7 +27,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val _binding = FragmentHomeBinding.bind(view)
+        /*val _binding = FragmentHomeBinding.bind(view)
 
         val _viewModel = HomeViewModel(requireContext()!!)
 
@@ -59,24 +60,24 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-    fun gotoRepositoryFragment(item: item) {
+    fun gotoRepositoryFragment(item: GitHubAccount) {
         val _action = actionRepositoriesFragmentToRepositoryFragment(item)
         findNavController().navigate(_action)
-    }
+    }*/
 }
 
-val diff_util = object : DiffUtil.ItemCallback<item>() {
-    override fun areItemsTheSame(oldItem: item, newItem: item): Boolean {
+/*val diff_util = object : DiffUtil.ItemCallback<item>() {
+    override fun areItemsTheSame(oldItem: GitHubAccount, newItem: GitHubAccount): Boolean {
         return oldItem.name == newItem.name
     }
 
-    override fun areContentsTheSame(oldItem: item, newItem: item): Boolean {
+    override fun areContentsTheSame(oldItem: GitHubAccount, newItem: GitHubAccount): Boolean {
         return oldItem == newItem
     }
 
-}
+}*/
 
-class CustomAdapter(
+/*class CustomAdapter(
     private val itemClickListener: OnItemClickListener,
 ) : ListAdapter<item, CustomAdapter.ViewHolder>(diff_util) {
 
@@ -100,5 +101,5 @@ class CustomAdapter(
         holder.itemView.setOnClickListener {
             itemClickListener.itemClick(_item)
         }
-    }
+    }*/
 }
