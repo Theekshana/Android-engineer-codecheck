@@ -18,7 +18,6 @@ import javax.inject.Inject
  * ViewModel for the HomeFragment, responsible for managing data related to GitHub accounts.
  * Uses [githubRepository] to fetch GitHub accounts from a data source.
  */
-
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val githubRepository: GithubRepository
