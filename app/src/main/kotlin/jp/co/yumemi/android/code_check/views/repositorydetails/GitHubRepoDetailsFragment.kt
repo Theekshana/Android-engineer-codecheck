@@ -3,15 +3,8 @@
  */
 package jp.co.yumemi.android.code_check.views.repositorydetails
 
-import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.navArgs
-import coil.load
 import jp.co.yumemi.android.code_check.R
-import jp.co.yumemi.android.code_check.activities.MainActivity.Companion.lastSearchDate
-import jp.co.yumemi.android.code_check.databinding.FragmentRepoDetailsBinding
 
 
 class GitHubRepoDetailsFragment : Fragment(R.layout.fragment_repo_details) {
