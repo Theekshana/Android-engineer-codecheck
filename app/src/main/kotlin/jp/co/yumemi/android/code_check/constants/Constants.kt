@@ -25,4 +25,9 @@ object Constants {
      */
     const val END_POINT_REPOSITORIES = "repositories"
 
+    /**
+     * Key used for passing message data.
+     */
+    const val KEY_MESSAGE = "message"
+
 }

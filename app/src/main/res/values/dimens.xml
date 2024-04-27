@@ -5,4 +5,14 @@
     <dimen name="text_layout_margin_horizontal">16dp</dimen>
     <dimen name="text_layout_margin_vertical">8dp</dimen>
 
+    /* Error Dialog Fragment Layout */
+    <dimen name="layout_padding">40dp</dimen>
+    <dimen name="image_layout_width">50dp</dimen>
+    <dimen name="image_layout_height">50dp</dimen>
+    <dimen name="image_layout_margin_top">8dp</dimen>
+    <dimen name="textview_invalid_user_input_margin_top">16dp</dimen>
+    <dimen name="button_ok_layout_margin_top">16dp</dimen>
+    <dimen name="button_ok_layout_margin_bottom">16dp</dimen>
+    <dimen name="button_ok_layout_height">48dp</dimen>
+
 </resources>
