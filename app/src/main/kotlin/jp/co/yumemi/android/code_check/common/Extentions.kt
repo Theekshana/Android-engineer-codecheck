@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 
 /**
  * Hides the software keyboard when called. This function is useful when you want to hide the keyboard
@@ -29,4 +30,19 @@ fun RecyclerView.initRecyclerView(
 ) {
     this.adapter = adapter
     this.layoutManager = layoutManager
+}
+
+/**
+ * Sets the visibility of the view based on the specified boolean flag.
+ * If `isShowLoading` is true, the view will be set to visible; otherwise, it will be set to gone.
+ * Additionally, if the view is an instance of LottieAnimationView and `isShowLoading` is true,
+ * it will start playing the animation.
+ *
+ * @param isShowLoading Determines whether the view should be shown or hidden.
+ */
+fun View.isVisible(isShowLoading: Boolean) {
+    visibility = if (isShowLoading) View.VISIBLE else View.GONE
+    if (isShowLoading && this is LottieAnimationView) {
+        playAnimation()
+    }
 }
