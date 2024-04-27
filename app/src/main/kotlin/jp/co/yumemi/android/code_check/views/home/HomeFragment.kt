@@ -9,15 +9,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import jp.co.yumemi.android.code_check.common.ErrorMessageDialogFragment
 import jp.co.yumemi.android.code_check.common.hideKeyboard
 import jp.co.yumemi.android.code_check.common.initRecyclerView
 import jp.co.yumemi.android.code_check.databinding.FragmentHomeBinding
 import jp.co.yumemi.android.code_check.model.DataStatus
 import jp.co.yumemi.android.code_check.model.GitHubAccount
+import jp.co.yumemi.android.code_check.util.NetworkUtils.Companion.isNetworkAvailable
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
@@ -90,7 +93,7 @@ class HomeFragment : Fragment() {
             )
 
         configureRecyclerViewLayout()
-        setupSearchInput()
+        configureSearchInputListener()
 
     }
 
@@ -101,22 +104,43 @@ class HomeFragment : Fragment() {
         )
     }
 
-    private fun setupSearchInput() {
-        // Perform a search using search input text
+    private fun configureSearchInputListener() {
 
         binding.searchInputText
             .setOnEditorActionListener { editText, action, _ ->
                 if (action == EditorInfo.IME_ACTION_SEARCH) {
-                    val userInput: String? = viewModel.currentSearchQuery
+                    val userInput = viewModel.currentSearchQuery?.trim()
 
-                    if (!userInput.isNullOrEmpty()) {
-                        viewModel.fetchGithubAccounts(userInput)
+                    if (userInput.isNullOrEmpty()) {
+                        showErrorMessageDialog("Please enter a valid input.")
+                        return@setOnEditorActionListener true
+                    } else {
                         hideKeyboard(editText)
+                        performSearch(userInput)
                         return@setOnEditorActionListener true
                     }
+
                 }
                 return@setOnEditorActionListener false
             }
+    }
+
+    private fun performSearch(userInput: String) {
+
+        if (isNetworkAvailable()) {
+            gitHubRepositoryAdapter.submitList(emptyList())
+            if (userInput.isNotEmpty()) {
+                viewModel.fetchGithubAccounts(userInput)
+            }
+        } else {
+            Toast.makeText(requireContext(), "No Network", Toast.LENGTH_LONG).show()
+        }
+    }
+
+
+    private fun showErrorMessageDialog(message: String) {
+        val dialogFragment = ErrorMessageDialogFragment.newInstance(message)
+        dialogFragment.show(childFragmentManager, "errorMessageDialog")
     }
 
 

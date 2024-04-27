@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="@dimen/layout_padding_top"
+        android:paddingBottom="@dimen/layout_padding_bottom"
+        android:paddingStart="@dimen/layout_padding_end"
+        android:paddingEnd="60dp">
+
+        <ImageView
+            android:id="@+id/imgInvalidUserInput"
+            android:layout_width="@dimen/image_layout_width"
+            android:layout_height="@dimen/image_layout_height"
+            android:layout_marginTop="@dimen/image_layout_margin_top"
+            android:src="@drawable/ic_user_error"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription,ImageContrastCheck"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/txtInvalidUserInput"
+            style="@style/repositoryNameTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/textview_invalid_user_input_margin_top"
+            app:layout_constraintEnd_toEndOf="@+id/imgInvalidUserInput"
+            app:layout_constraintStart_toStartOf="@+id/imgInvalidUserInput"
+            app:layout_constraintTop_toBottomOf="@+id/imgInvalidUserInput" />
+
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_ok_layout_height"
+            android:layout_marginTop="@dimen/button_ok_layout_margin_top"
+            android:layout_marginBottom="@dimen/button_ok_layout_margin_bottom"
+            android:text="@string/ok"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtInvalidUserInput"
+            app:layout_constraintStart_toStartOf="@+id/txtInvalidUserInput"
+            app:layout_constraintTop_toBottomOf="@+id/txtInvalidUserInput" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
