@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import jp.co.yumemi.android.code_check.common.hideKeyboard
+import jp.co.yumemi.android.code_check.common.initRecyclerView
 import jp.co.yumemi.android.code_check.databinding.FragmentHomeBinding
 import jp.co.yumemi.android.code_check.model.DataStatus
 import jp.co.yumemi.android.code_check.model.GitHubAccount
@@ -46,7 +47,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupGitHubAccountAdapter()
+        initializeGitHubRecyclerView()
 
         lifecycleScope.launch {
             binding.apply {
@@ -78,7 +79,7 @@ class HomeFragment : Fragment() {
         gitHubRepositoryAdapter.submitList(gitHubAccountList)
     }
 
-    private fun setupGitHubAccountAdapter() {
+    private fun initializeGitHubRecyclerView() {
         gitHubRepositoryAdapter =
             GitHubRepositoryAdapter(
                 object : GitHubRepositoryAdapter.OnItemClickListener {
@@ -88,21 +89,22 @@ class HomeFragment : Fragment() {
                 },
             )
 
-        val layoutManager = LinearLayoutManager(requireActivity())
-        binding.recyclerView.layoutManager = layoutManager
-
-        // Set adapter
-        binding.recyclerView.adapter = gitHubRepositoryAdapter
-
+        configureRecyclerViewLayout()
         setupSearchInput()
 
+    }
 
+    private fun configureRecyclerViewLayout() {
+        binding.searchResultsRecyclerView.initRecyclerView(
+            LinearLayoutManager(requireContext()),
+            gitHubRepositoryAdapter
+        )
     }
 
     private fun setupSearchInput() {
         // Perform a search using search input text
 
-       binding.searchInputText
+        binding.searchInputText
             .setOnEditorActionListener { editText, action, _ ->
                 if (action == EditorInfo.IME_ACTION_SEARCH) {
                     val userInput: String? = viewModel.currentSearchQuery
