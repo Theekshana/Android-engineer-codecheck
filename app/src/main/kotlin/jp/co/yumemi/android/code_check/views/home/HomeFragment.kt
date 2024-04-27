@@ -4,101 +4,115 @@
 package jp.co.yumemi.android.code_check.views.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
-
-import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.databinding.FragmentHomeBinding
-import jp.co.yumemi.android.code_check.views.home.HomeFragmentDirections.Companion.actionRepositoriesFragmentToRepositoryFragment
+import jp.co.yumemi.android.code_check.model.DataStatus
+import jp.co.yumemi.android.code_check.model.GitHubAccount
+import kotlinx.coroutines.launch
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment() {
+
+    private lateinit var binding: FragmentHomeBinding
+    private lateinit var viewModel: HomeViewModel
+    private lateinit var gitHubRepositoryAdapter: GitHubRepositoryAdapter
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
+        binding = FragmentHomeBinding.inflate(
+            inflater,
+            container,
+            false
+        ).apply {
+            viewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
+            githubVM = viewModel
+            lifecycleOwner = this@HomeFragment
+        }
+
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val _binding = FragmentHomeBinding.bind(view)
+        setupGitHubAccountAdapter()
 
-        val _viewModel = HomeViewModel(requireContext()!!)
+        lifecycleScope.launch {
+            binding.apply {
+                viewModel.githubAccounts.observe(viewLifecycleOwner) {
+                    when (it.status) {
+                        DataStatus.Status.LOADING -> {
+                            //Loading state
+                        }
 
-        val _layoutManager = LinearLayoutManager(requireContext()!!)
-        val _dividerItemDecoration =
-            DividerItemDecoration(requireContext()!!, _layoutManager.orientation)
-        val _adapter = CustomAdapter(object : CustomAdapter.OnItemClickListener {
-            override fun itemClick(item: item) {
-                gotoRepositoryFragment(item)
-            }
-        })
+                        DataStatus.Status.SUCCESS -> {
+                            it.data?.let { fetchedGitHubData ->
+                                displayFetchedGitHubData(fetchedGitHubData)
+                                Log.d("HomeFragment", "Data: $fetchedGitHubData")
 
-        _binding.searchInputText
-            .setOnEditorActionListener { editText, action, _ ->
-                if (action == EditorInfo.IME_ACTION_SEARCH) {
-                    editText.text.toString().let {
-                        _viewModel.searchResults(it).apply {
-                            _adapter.submitList(this)
+                            }
+                        }
+
+                        DataStatus.Status.ERROR -> {
+                            //Error state
                         }
                     }
-                    return@setOnEditorActionListener true
+                }
+            }
+        }
+
+    }
+
+    private fun displayFetchedGitHubData(gitHubAccountList: List<GitHubAccount>) {
+        gitHubRepositoryAdapter.submitList(gitHubAccountList)
+    }
+
+    private fun setupGitHubAccountAdapter() {
+        gitHubRepositoryAdapter =
+            GitHubRepositoryAdapter(
+                object : GitHubRepositoryAdapter.OnItemClickListener {
+                    override fun itemClick(item: GitHubAccount) {
+                        TODO("Not yet implemented")
+                    }
+                },
+            )
+
+        val layoutManager = LinearLayoutManager(requireActivity())
+        binding.recyclerView.layoutManager = layoutManager
+
+        // Set adapter
+        binding.recyclerView.adapter = gitHubRepositoryAdapter
+
+        setupSearchInput()
+
+
+    }
+
+    private fun setupSearchInput() {
+        // Perform a search using search input text
+        binding.searchInputText
+            .setOnEditorActionListener { editText, action, _ ->
+                if (action == EditorInfo.IME_ACTION_SEARCH) {
+                    val userInput: String? = viewModel.currentSearchQuery
+
+                    if (!userInput.isNullOrEmpty()) {
+                        viewModel.fetchGithubAccounts(userInput)
+                        return@setOnEditorActionListener true
+                    }
                 }
                 return@setOnEditorActionListener false
             }
-
-        _binding.recyclerView.also {
-            it.layoutManager = _layoutManager
-            it.addItemDecoration(_dividerItemDecoration)
-            it.adapter = _adapter
-        }
     }
 
-    fun gotoRepositoryFragment(item: item) {
-        val _action = actionRepositoriesFragmentToRepositoryFragment(item)
-        findNavController().navigate(_action)
-    }
-}
 
-val diff_util = object : DiffUtil.ItemCallback<item>() {
-    override fun areItemsTheSame(oldItem: item, newItem: item): Boolean {
-        return oldItem.name == newItem.name
-    }
-
-    override fun areContentsTheSame(oldItem: item, newItem: item): Boolean {
-        return oldItem == newItem
-    }
-
-}
-
-class CustomAdapter(
-    private val itemClickListener: OnItemClickListener,
-) : ListAdapter<item, CustomAdapter.ViewHolder>(diff_util) {
-
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
-
-    interface OnItemClickListener {
-        fun itemClick(item: item)
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val _view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.layout_repo_list_item, parent, false)
-        return ViewHolder(_view)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val _item = getItem(position)
-        (holder.itemView.findViewById<View>(R.id.repositoryNameView) as TextView).text =
-            _item.name
-
-        holder.itemView.setOnClickListener {
-            itemClickListener.itemClick(_item)
-        }
-    }
 }
