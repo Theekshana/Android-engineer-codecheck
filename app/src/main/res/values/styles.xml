@@ -7,4 +7,10 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <!-- Error Dialog Fragment Text Style-->
+    <style name="txtInvalidUserInput">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>
