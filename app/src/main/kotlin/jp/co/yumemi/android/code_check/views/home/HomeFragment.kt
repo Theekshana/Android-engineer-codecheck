@@ -9,11 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
+import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.common.ErrorMessageDialogFragment
 import jp.co.yumemi.android.code_check.common.hideKeyboard
 import jp.co.yumemi.android.code_check.common.initRecyclerView
@@ -112,7 +113,7 @@ class HomeFragment : Fragment() {
                     val userInput = viewModel.currentSearchQuery?.trim()
 
                     if (userInput.isNullOrEmpty()) {
-                        showErrorMessageDialog("Please enter a valid input.")
+                        showErrorMessageDialog(getString(R.string.invalidInput))
                         return@setOnEditorActionListener true
                     } else {
                         hideKeyboard(editText)
@@ -133,14 +134,15 @@ class HomeFragment : Fragment() {
                 viewModel.fetchGithubAccounts(userInput)
             }
         } else {
-            Toast.makeText(requireContext(), "No Network", Toast.LENGTH_LONG).show()
+            showErrorMessageDialog(getString(R.string.noInternetConnection))
         }
     }
 
 
+
     private fun showErrorMessageDialog(message: String) {
         val dialogFragment = ErrorMessageDialogFragment.newInstance(message)
-        dialogFragment.show(childFragmentManager, "errorMessageDialog")
+        dialogFragment.show(childFragmentManager, getString(R.string.errorMessageDialog))
     }
 
 
