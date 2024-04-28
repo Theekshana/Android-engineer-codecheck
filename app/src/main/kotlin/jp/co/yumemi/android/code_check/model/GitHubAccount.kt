@@ -23,7 +23,7 @@ data class GitHubAccount(
     val name: String?,
     val owner: Owner?,
     @SerializedName("language")
-    val language: String?,
+    val safeLanguage: String?,
     @SerializedName("stargazers_count")
     val stargazersCount: Long?,
     @SerializedName("watchers_count")
@@ -33,4 +33,9 @@ data class GitHubAccount(
     @SerializedName("open_issues_count")
     val openIssuesCount: Long?,
 
-    ) : Parcelable
+    ) : Parcelable {
+    val language: String
+        get() = safeLanguage ?: "No data"
+}
+
+
