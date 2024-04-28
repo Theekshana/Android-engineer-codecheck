@@ -23,7 +23,7 @@ data class GitHubAccount(
     val name: String?,
     val owner: Owner?,
     @SerializedName("language")
-    val safeLanguage: String?,
+    val repositoryLanguage: String?,
     @SerializedName("stargazers_count")
     val stargazersCount: Long?,
     @SerializedName("watchers_count")
@@ -34,8 +34,18 @@ data class GitHubAccount(
     val openIssuesCount: Long?,
 
     ) : Parcelable {
+
+    /**
+     * Gets the language of the GitHub repository.
+     *
+     * This property returns the language of the GitHub repository if available. If the language
+     * is not available (i.e., if [repositoryLanguage] is null), it returns "No data" as a default value.
+     *
+     * @return The language of the GitHub repository, or "No data" if not available.
+     */
     val language: String
-        get() = safeLanguage ?: "No data"
+        get() = repositoryLanguage ?: "No data"
+
 }
 
 
