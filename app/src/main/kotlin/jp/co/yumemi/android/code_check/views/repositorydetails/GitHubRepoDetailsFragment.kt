@@ -28,7 +28,6 @@ class GitHubRepoDetailsFragment : Fragment() {
     private val args: GitHubRepoDetailsFragmentArgs by navArgs()
 
     // ViewModel instance responsible for managing repository details
-
     private lateinit var viewModel: GitHubRepoDetailsViewModel
 
     // The selected GitHub repository object obtained from arguments
