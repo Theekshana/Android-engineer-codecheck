@@ -6,4 +6,9 @@
     <string name="invalidInput">Please enter a valid input.</string>
     <string name="noInternetConnection">No internet connection</string>
     <string name="errorMessageDialog">errorMessageDialog</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="homeFragment">Home</string>
+    <string name="detailsFragment">Details</string>
+    <string name="favouritesFragment">Favourites</string>
+    <string name="appInfoFragment">Information</string>
 </resources>
