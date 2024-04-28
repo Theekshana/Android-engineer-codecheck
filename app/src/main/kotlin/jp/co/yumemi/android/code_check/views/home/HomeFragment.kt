@@ -11,6 +11,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.common.ErrorMessageDialogFragment
@@ -103,18 +104,34 @@ class HomeFragment : Fragment() {
      * configures the layout and search input listener for the RecyclerView.
      */
     private fun initializeGitHubRecyclerView() {
-        gitHubRepositoryAdapter =
-            GitHubRepositoryAdapter(
-                object : GitHubRepositoryAdapter.OnItemClickListener {
-                    override fun itemClick(item: GitHubAccount) {
-                        TODO("Not yet implemented")
-                    }
-                },
-            )
+        // Create a new instance of GitHubRepositoryAdapter and set up item click listener
+        gitHubRepositoryAdapter = GitHubRepositoryAdapter(
+            object : GitHubRepositoryAdapter.OnItemClickListener {
+                override fun itemClick(item: GitHubAccount) {
+                    // Navigate to the GitHub repository details screen when an item is clicked
+                    navigateToGitHubRepoDetails(item)
+                }
+            },
+        )
 
+        // Configure layout for RecyclerView
         configureRecyclerViewLayout()
+
+        // Configure search input listener for filtering repositories
         configureSearchInputListener()
 
+    }
+
+    /**
+     * Navigates from the home screen to the GitHub repository details screen.
+     *
+     * @param item The GitHubAccount object representing the repository details to navigate to.
+     */
+    private fun navigateToGitHubRepoDetails(item: GitHubAccount) {
+        findNavController().navigate(
+            // Create an action from the home fragment to the repository details fragment
+            HomeFragmentDirections.actionHomeFragmentToGitHubRepoDetailsFragment(item)
+        )
     }
 
     /**

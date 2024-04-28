@@ -3,32 +3,77 @@
  */
 package jp.co.yumemi.android.code_check.views.repositorydetails
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import jp.co.yumemi.android.code_check.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
+import jp.co.yumemi.android.code_check.databinding.FragmentRepoDetailsBinding
+import jp.co.yumemi.android.code_check.model.GitHubAccount
 
+/**
+ * Fragment representing the details screen for a specific GitHub repository. This fragment
+ * retrieves repository details passed through arguments and displays them using data binding.
+ */
+@AndroidEntryPoint
+class GitHubRepoDetailsFragment : Fragment() {
 
-class GitHubRepoDetailsFragment : Fragment(R.layout.fragment_repo_details) {
+    // Data binding for the fragment layout
+    private lateinit var binding: FragmentRepoDetailsBinding
 
-    /*private val args: GitHubRepoDetailsFragmentArgs by navArgs()
+    // Arguments passed to the fragment containing repository details
+    private val args: GitHubRepoDetailsFragmentArgs by navArgs()
 
-    private var binding: FragmentRepoDetailsBinding? = null
-    private val _binding get() = binding!!
+    // ViewModel instance responsible for managing repository details
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    private lateinit var viewModel: GitHubRepoDetailsViewModel
+
+    // The selected GitHub repository object obtained from arguments
+    private lateinit var selectedRepository: GitHubAccount
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
+        binding = FragmentRepoDetailsBinding.inflate(
+            inflater,
+            container,
+            false
+        ).apply {
+            // Initialize ViewModel using ViewModelProvider
+            viewModel = ViewModelProvider(requireActivity())[GitHubRepoDetailsViewModel::class.java]
+
+            // Extract repository details from arguments
+            selectedRepository = args.repository
+
+            // Assign ViewModel to data binding variable
+            repoDetails = viewModel
+            lifecycleOwner = this@GitHubRepoDetailsFragment
+        }
+
+        return binding.root
+    }
+
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.d("検索した日時", lastSearchDate.toString())
+        setupRepositoryDetails()
 
-        binding = FragmentRepoDetailsBinding.bind(view)
+    }
 
-        var item = args.item
+    /**
+     * Loads the selected repository details into the ViewModel using the
+     * `loadRepositoryDetails` method.
+     */
+    private fun setupRepositoryDetails() {
+        viewModel.loadRepositoryDetails(selectedRepository)
+    }
 
-        _binding.ownerIconView.load(item.ownerIconUrl);
-        _binding.nameView.text = item.name;
-        _binding.languageView.text = item.language;
-        _binding.starsView.text = "${item.stargazersCount} stars";
-        _binding.watchersView.text = "${item.watchersCount} watchers";
-        _binding.forksView.text = "${item.forksCount} forks";
-        _binding.openIssuesView.text = "${item.openIssuesCount} open issues";
-    }*/
 }
