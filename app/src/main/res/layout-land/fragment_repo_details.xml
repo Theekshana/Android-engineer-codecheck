@@ -236,6 +236,7 @@
 
                     <TextView
                         android:id="@+id/openIssuesView"
+                        style="@style/txtSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/text_margin_8dp"
