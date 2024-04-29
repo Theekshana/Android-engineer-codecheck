@@ -11,4 +11,8 @@
     <string name="detailsFragment">Details</string>
     <string name="favouritesFragment">Favourites</string>
     <string name="appInfoFragment">Information</string>
+    <string name="stars">stars</string>
+    <string name="watchers">watchers</string>
+    <string name="forks">forks</string>
+    <string name="openIssues">open issues</string>
 </resources>
