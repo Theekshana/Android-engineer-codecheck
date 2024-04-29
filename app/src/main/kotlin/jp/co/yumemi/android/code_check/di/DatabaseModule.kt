@@ -9,6 +9,8 @@ import dagger.hilt.components.SingletonComponent
 import jp.co.yumemi.android.code_check.constants.Constants.GITHUB_REPOSITORY_DB_NAME
 import jp.co.yumemi.android.code_check.db.GitHubRepositoryDao
 import jp.co.yumemi.android.code_check.db.GitHubRepositoryDatabase
+import jp.co.yumemi.android.code_check.repository.FavoriteAccountRepository
+import jp.co.yumemi.android.code_check.repository.FavoriteAccountRepositoryImpl
 import javax.inject.Singleton
 
 /**
@@ -44,6 +46,20 @@ object DatabaseModule {
     @Singleton
     fun provideGitHubRepositoryDao(database: GitHubRepositoryDatabase): GitHubRepositoryDao {
         return database.gitHubRepositoryDao()
+    }
+
+    /**
+     * Provides an instance of the implementation of the FavoriteAccountRepository interface.
+     *
+     * @param gitHubRepositoryDao The DAO for GitHub repositories.
+     * @return An instance of the FavoriteAccountRepository implementation.
+     */
+    @Singleton
+    @Provides
+    fun provideFavoriteAccountRepository(
+        gitHubRepositoryDao: GitHubRepositoryDao
+    ): FavoriteAccountRepository {
+        return FavoriteAccountRepositoryImpl(gitHubRepositoryDao)
     }
 
 }
