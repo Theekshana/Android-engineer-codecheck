@@ -35,6 +35,11 @@ object Constants {
      */
     const val GITHUB_REPOSITORY_TABLE = "github_repository"
 
+    /**
+     * Constant representing the name of the Room database for GitHub repositories.
+     * This database stores information related to GitHub repositories.
+     */
+    const val GITHUB_REPOSITORY_DB_NAME = "github_repository_database"
 
 
 }
