@@ -28,4 +28,16 @@
     <dimen name="web_image_layout_margin_top">8dp</dimen>
     <dimen name="web_image_layout_margin_End">8dp</dimen>
 
+    /* Layout Repo Details */
+    <dimen name="image_padding">10dp</dimen>
+    <dimen name="language_card_view_corner_radius">10dp</dimen>
+    <dimen name="name_view_text_margin_top">8dp</dimen>
+    <dimen name="language_view_text_view_margin_top_">8dp</dimen>
+    <dimen name="language_view_text_view_margin_bottom_">8dp</dimen>
+    <dimen name="language_view_card_view_margin">24dp</dimen>
+    <dimen name="card_view_layout_width_">150dp</dimen>
+    <dimen name="text_margin_8dp">8dp</dimen>
+    <dimen name="txt_forks_card_view">16dp</dimen>
+
+
 </resources>
