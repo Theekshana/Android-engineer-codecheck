@@ -30,4 +30,11 @@ object Constants {
      */
     const val KEY_MESSAGE = "message"
 
+    /**
+     * Name of the table in the database that stores GitHub repository data.
+     */
+    const val GITHUB_REPOSITORY_TABLE = "github_repository"
+
+
+
 }
