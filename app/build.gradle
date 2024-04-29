@@ -59,6 +59,7 @@ dependencies {
     def mockito_version = '5.10.0'
     def lottie_version = '3.5.0'
     def glide_version = '4.16.0'
+    def androidx_room_version = '2.6.1'
 
     // ——— Common AndroidX libraries ———++
     implementation "androidx.core:core-ktx:$androidx_core_ktx_version"
@@ -106,6 +107,12 @@ dependencies {
     //  ———  Glide ——— ++
     implementation "com.github.bumptech.glide:glide:$glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+
+    //  ———  Room DB ——— ++
+    implementation "androidx.room:room-runtime:$androidx_room_version"
+    ksp "androidx.room:room-compiler:$androidx_room_version"
+    implementation "androidx.room:room-ktx:$androidx_room_version"
+    androidTestImplementation "androidx.room:room-testing:$androidx_room_version"
 
 
 }
