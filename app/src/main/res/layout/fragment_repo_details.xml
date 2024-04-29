@@ -167,7 +167,7 @@
             android:id="@+id/txtForksCardView"
             android:layout_width="@dimen/card_view_layout_width_"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/txt_forks_card_view"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="@+id/starsCardView"
             app:layout_constraintStart_toStartOf="@+id/starsCardView"
             app:layout_constraintTop_toBottomOf="@+id/starsCardView">
@@ -206,14 +206,13 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/txtOpenIssueCardView"
+            android:id="@+id/txtOpenIssuesCardView"
             android:layout_width="@dimen/card_view_layout_width_"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/txtForksCardView"
             app:layout_constraintEnd_toEndOf="@+id/txtWatchersCardView"
             app:layout_constraintStart_toStartOf="@+id/txtWatchersCardView"
-            app:layout_constraintTop_toTopOf="@+id/txtForksCardView"
-            tools:ignore="TextSizeCheck">
+            app:layout_constraintTop_toTopOf="@+id/txtForksCardView">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -254,10 +253,10 @@
             android:layout_marginTop="8dp"
             android:contentDescription="TODO"
             android:src="@drawable/ic_fav"
-            app:layout_constraintEnd_toEndOf="@+id/txtOpenIssueCardView"
+            app:layout_constraintEnd_toEndOf="@+id/txtOpenIssuesCardView"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/txtOpenIssueCardView"
-            app:layout_constraintTop_toBottomOf="@+id/txtOpenIssueCardView"
+            app:layout_constraintStart_toStartOf="@+id/txtOpenIssuesCardView"
+            app:layout_constraintTop_toBottomOf="@+id/txtOpenIssuesCardView"
             tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
 
         <androidx.constraintlayout.widget.Guideline
