@@ -15,4 +15,6 @@
     <string name="watchers">watchers</string>
     <string name="forks">forks</string>
     <string name="openIssues">open issues</string>
+    <string name="successfullyDeleted">Successfully deleted...</string>
+    <string name="undo">Undo</string>
 </resources>
