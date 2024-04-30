@@ -130,4 +130,31 @@ class FavoriteAccountRepositoryImplTest {
         verify(gitHubRepositoryDao).deleteFavorite(mockObject)
     }
 
+    /**
+     * Unit test for verifying the behavior of [FavoriteAccountRepository.deleteFavoriteAccount]
+     * when a database error occurs.
+     */
+    @Test
+    fun `test deleteFavoriteAccount with database error`() = runBlocking {
+
+        val errorMessage = "Failed to delete account"
+
+        // Stub the DAO to throw a RuntimeException with the error message
+        `when`(gitHubRepositoryDao.deleteFavorite(mockObject))
+            .thenThrow(RuntimeException(errorMessage))
+
+        // Call the method under test
+        val result = kotlin.runCatching {
+            favoriteAccountRepository.deleteFavoriteAccount(mockObject)
+        }
+
+        // Check if the operation failed
+        assertTrue(result.isFailure)
+        // Check if the correct exception was thrown
+        assertTrue(result.exceptionOrNull() is DatabaseOperationException)
+
+        // Check if the exception message contains the expected error message
+        assertTrue(result.exceptionOrNull()?.message?.contains(errorMessage) == true)
+    }
+
 }
