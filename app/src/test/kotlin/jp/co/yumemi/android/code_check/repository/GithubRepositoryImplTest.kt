@@ -1,14 +1,16 @@
 package jp.co.yumemi.android.code_check.repository
 
 import jp.co.yumemi.android.code_check.model.DataStatus
-import jp.co.yumemi.android.code_check.model.GitHubAccount
 import jp.co.yumemi.android.code_check.model.GitHubServerResponse
-import jp.co.yumemi.android.code_check.model.Owner
 import jp.co.yumemi.android.code_check.network.GithubApiService
 import jp.testdata.MockData.mockObject
-import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.ResponseBody.Companion.toResponseBody
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
+import org.junit.Assert.fail
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -17,7 +19,6 @@ import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
 import retrofit2.Response
-
 
 /**
  * Unit tests for [GithubRepositoryImpl].
@@ -41,7 +42,6 @@ class GithubRepositoryImplTest {
         MockitoAnnotations.openMocks(this)
 
         // Create an instance of the class under test, injecting the mocked GithubApiService.
-
         githubRepository = GithubRepositoryImpl(mockGithubApiService)
     }
 
@@ -71,12 +71,11 @@ class GithubRepositoryImplTest {
             // Use a coroutine scope to collect data from the Flow
             flow.collect { dataStatus ->
                 // Check loading state
-                Assert.assertTrue(true)
-
+                assertTrue(true)
                 // Check success state
                 when (dataStatus.status) {
                     DataStatus.Status.LOADING -> {
-                        Assert.assertTrue(dataStatus.data == null)
+                        assertTrue(dataStatus.data == null)
                     }
                     // If the status is SUCCESS, assert that the returned data matches the expected list.
                     DataStatus.Status.SUCCESS -> {
@@ -87,7 +86,60 @@ class GithubRepositoryImplTest {
                     }
                     // If the status is ERROR, fail the test with an appropriate message
                     DataStatus.Status.ERROR -> {
-                        Assert.fail("Unexpected error state")
+                        fail("Unexpected error state")
+                    }
+                }
+            }
+        }
+
+    /**
+     * Test case for verifying the behavior of [GithubRepositoryImpl.getGithubAccountsFromDataSource] function
+     * when the API call fails.
+     */
+    @Test
+    fun `getGitHutAccountsFromDataSource should return loading and then error when API call fails`() =
+        runBlocking {
+            // Given
+            val searchQuery = "kotlin"
+
+            val mockErrorResponse = Response.error<GitHubServerResponse>(
+                404,
+                "".toResponseBody(
+                    "application/json".toMediaType()
+                )
+            )
+
+            // Mock unsuccessful response from GithubApiService
+            `when`(mockGithubApiService.fetchRepositoryInformation(searchQuery)).thenReturn(
+                mockErrorResponse
+            )
+
+            // When
+            val flow = githubRepository.getGithubAccountsFromDataSource(searchQuery)
+
+            // Then
+            flow.collect { dataStatus ->
+                // Check loading state
+                assertTrue(true)
+
+                // Check error state
+                when (dataStatus.status) {
+                    DataStatus.Status.LOADING -> {
+                        assertTrue(dataStatus.data == null)
+                    }
+
+                    DataStatus.Status.SUCCESS -> {
+                        // Fail the test if success state is encountered unexpectedly
+                        fail("Expected error state but got success")
+                    }
+
+                    DataStatus.Status.ERROR -> {
+                        // Assert that the error message is not null and matches the expected format
+                        assertNotNull(dataStatus.message)
+                        assertEquals(
+                            "Failed to fetch repositories: ${mockErrorResponse.message()}",
+                            dataStatus.message
+                        )
                     }
                 }
             }
