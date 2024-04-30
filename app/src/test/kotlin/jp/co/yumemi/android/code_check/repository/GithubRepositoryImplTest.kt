@@ -5,6 +5,7 @@ import jp.co.yumemi.android.code_check.model.GitHubAccount
 import jp.co.yumemi.android.code_check.model.GitHubServerResponse
 import jp.co.yumemi.android.code_check.model.Owner
 import jp.co.yumemi.android.code_check.network.GithubApiService
+import jp.testdata.MockData.mockObject
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
@@ -55,19 +56,7 @@ class GithubRepositoryImplTest {
             val mockResponse = Response.success(
                 GitHubServerResponse(
                     items = listOf(
-                        GitHubAccount(
-                            name = "Repository Name",
-                            owner = Owner(
-                                "https://via.placeholder.com/150",
-                                "https://dummyimage.com/150x150"
-                            ),
-                            repositoryLanguage = "Kotlin",
-                            stargazersCount = 100,
-                            watchersCount = 200,
-                            forksCount = 50,
-                            openIssuesCount = 10
-
-                        )
+                        mockObject
                     )
                 )
             )
@@ -82,7 +71,7 @@ class GithubRepositoryImplTest {
             // Use a coroutine scope to collect data from the Flow
             flow.collect { dataStatus ->
                 // Check loading state
-                Assert.assertTrue(dataStatus is DataStatus)
+                Assert.assertTrue(true)
 
                 // Check success state
                 when (dataStatus.status) {
@@ -92,18 +81,7 @@ class GithubRepositoryImplTest {
                     // If the status is SUCCESS, assert that the returned data matches the expected list.
                     DataStatus.Status.SUCCESS -> {
                         val expectedList = listOf(
-                            GitHubAccount(
-                                name = "Repository Name",
-                                owner = Owner(
-                                    "https://via.placeholder.com/150",
-                                    "https://dummyimage.com/150x150"
-                                ),
-                                repositoryLanguage = "Kotlin",
-                                stargazersCount = 100,
-                                watchersCount = 200,
-                                forksCount = 50,
-                                openIssuesCount = 10
-                            )
+                            mockObject
                         )
                         assertEquals(expectedList, dataStatus.data)
                     }
