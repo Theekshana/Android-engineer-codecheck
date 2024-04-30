@@ -1,13 +1,15 @@
 package jp.co.yumemi.android.code_check.repository
 
 import jp.co.yumemi.android.code_check.db.GitHubRepositoryDao
+import jp.co.yumemi.android.code_check.exceptions.DatabaseOperationException
 import jp.testdata.MockData.mockObject
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito
+import org.mockito.Mockito.verify
+import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
 
@@ -35,7 +37,25 @@ class FavoriteAccountRepositoryImplTest {
         favoriteAccountRepository.insertFavoriteAccount(mockObject)
 
         // Verify that the insertFavorite function of the gitHubRepositoryDao is called with the same mock object
-        Mockito.verify(gitHubRepositoryDao).insertFavorite(mockObject)
+        verify(gitHubRepositoryDao).insertFavorite(mockObject)
+    }
+
+    /**
+     * Test case for verifying the behavior of [FavoriteAccountRepository.insertFavoriteAccount]
+     * when an exception is thrown during the insertion process.
+     */
+    @Test(expected = DatabaseOperationException::class)
+    fun `test insertFavoriteAccount with exception`() = runBlocking {
+
+        // Stub the DAO to throw an exception
+        `when`(gitHubRepositoryDao.insertFavorite(mockObject))
+            .thenThrow(RuntimeException("Failed to insert"))
+
+        // When
+        favoriteAccountRepository.insertFavoriteAccount(mockObject)
+
+        // Verify that insertFavorite method was called on the DAO
+        verify(gitHubRepositoryDao).insertFavorite(mockObject)
     }
 
 }
