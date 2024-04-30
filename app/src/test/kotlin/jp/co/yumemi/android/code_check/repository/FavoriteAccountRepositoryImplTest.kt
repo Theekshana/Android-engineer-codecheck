@@ -105,12 +105,29 @@ class FavoriteAccountRepositoryImplTest {
 
         // Assert that the exception thrown is a RuntimeException
         assertTrue(result.exceptionOrNull() is RuntimeException)
-        
+
         // Assert that the exception message matches the expected error message
         assertEquals(
             "Failed to fetch",
             result.exceptionOrNull()?.message
         )
+    }
+
+    /**
+     * Unit test for verifying the behavior of [FavoriteAccountRepository.deleteFavoriteAccount]
+     * when the deletion is successful.
+     */
+    @Test
+    fun `test deleteFavoriteAccount success`() = runBlocking {
+
+        // Stub the DAO to return Unit when deleteFavorite is called with mockObject
+        `when`(gitHubRepositoryDao.deleteFavorite(mockObject)).thenReturn(Unit)
+
+        // Call the method under test
+        favoriteAccountRepository.deleteFavoriteAccount(mockObject)
+
+        // Verify that deleteFavorite was called with the correct parameter
+        verify(gitHubRepositoryDao).deleteFavorite(mockObject)
     }
 
 }
