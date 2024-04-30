@@ -3,7 +3,10 @@ package jp.co.yumemi.android.code_check.repository
 import jp.co.yumemi.android.code_check.db.GitHubRepositoryDao
 import jp.co.yumemi.android.code_check.exceptions.DatabaseOperationException
 import jp.testdata.MockData.mockObject
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -57,5 +60,28 @@ class FavoriteAccountRepositoryImplTest {
         // Verify that insertFavorite method was called on the DAO
         verify(gitHubRepositoryDao).insertFavorite(mockObject)
     }
+
+    /**
+     * Unit test for verifying the behavior of [FavoriteAccountRepository.getFavoriteRepositories].
+     */
+    @Test
+    fun `test getFavoriteRepositories`() = runBlocking {
+        // Mock favorite repositories
+        val favoriteRepos = listOf(
+            mockObject
+        )
+        // Create a flow of favorite repositories
+        val flow = flowOf(favoriteRepos)
+
+        // Stub the DAO to return the flow when getAllFavorites is called
+        `when`(gitHubRepositoryDao.getAllFavorites()).thenReturn(flow)
+
+        // Call the method under test
+        val result = favoriteAccountRepository.getFavoriteRepositories().toList()
+
+        // Assert that the result matches the expected list of favorite repositories
+        assertEquals(listOf(favoriteRepos), result)
+    }
+
 
 }
