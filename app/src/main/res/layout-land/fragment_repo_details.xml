@@ -256,7 +256,7 @@
             </androidx.cardview.widget.CardView>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabSave"
+                android:id="@+id/btnFabSaveRepository"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
