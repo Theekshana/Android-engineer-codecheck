@@ -4,6 +4,7 @@
 package jp.co.yumemi.android.code_check.views.repositorydetails
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.yumemi.android.code_check.databinding.FragmentRepoDetailsBinding
 import jp.co.yumemi.android.code_check.model.GitHubAccount
+import jp.co.yumemi.android.code_check.views.favourite.FavoritesViewModel
 
 /**
  * Fragment representing the details screen for a specific GitHub repository. This fragment
@@ -29,6 +31,7 @@ class GitHubRepoDetailsFragment : Fragment() {
 
     // ViewModel instance responsible for managing repository details
     private lateinit var viewModel: GitHubRepoDetailsViewModel
+    private lateinit var favoritesViewModel: FavoritesViewModel
 
     // The selected GitHub repository object obtained from arguments
     private lateinit var selectedRepository: GitHubAccount
@@ -45,6 +48,7 @@ class GitHubRepoDetailsFragment : Fragment() {
         ).apply {
             // Initialize ViewModel using ViewModelProvider
             viewModel = ViewModelProvider(requireActivity())[GitHubRepoDetailsViewModel::class.java]
+            favoritesViewModel = ViewModelProvider(requireActivity())[FavoritesViewModel::class.java]
 
             // Extract repository details from arguments
             selectedRepository = args.repository
@@ -64,7 +68,15 @@ class GitHubRepoDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupRepositoryDetails()
+        setupSaveButton()
 
+    }
+
+    private fun setupSaveButton() {
+        binding.btnFabSaveRepository.setOnClickListener {
+            favoritesViewModel.saveFavoriteAccount(selectedRepository)
+            Log.d("Room", "Data: $selectedRepository")
+        }
     }
 
     /**

@@ -62,7 +62,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Initialize the RecyclerView for displaying GitHub repositories
-        initializeGitHubRecyclerView()
+        initializeGitHubRepositoryAdapter()
 
         // Observe GitHub accounts LiveData and update UI accordingly
         lifecycleScope.launch {
@@ -99,11 +99,12 @@ class HomeFragment : Fragment() {
     }
 
     /**
-     * Initializes the RecyclerView for displaying GitHub repositories. It creates a new instance
-     * of the GitHubRepositoryAdapter and configures the item click listener. Additionally, it
-     * configures the layout and search input listener for the RecyclerView.
+     * Initializes the GitHubRepositoryAdapter for displaying GitHub repositories in a RecyclerView.
+     *
+     * This method creates a new instance of the GitHubRepositoryAdapter and configures the item click listener.
+     * Additionally, it prepares the adapter to be set on the RecyclerView.
      */
-    private fun initializeGitHubRecyclerView() {
+    private fun initializeGitHubRepositoryAdapter() {
         // Create a new instance of GitHubRepositoryAdapter and set up item click listener
         gitHubRepositoryAdapter = GitHubRepositoryAdapter(
             object : GitHubRepositoryAdapter.OnItemClickListener {
