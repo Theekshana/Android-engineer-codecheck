@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.common.initRecyclerView
+import jp.co.yumemi.android.code_check.constants.Constants.TARGET_REPOSITORY
 import jp.co.yumemi.android.code_check.databinding.FragmentFavouritesBinding
 import jp.co.yumemi.android.code_check.model.GitHubAccount
 
@@ -27,6 +29,7 @@ class FavouritesFragment : Fragment() {
 
     // ViewModel for managing data and business logic related to the FavouritesFragment
     private lateinit var viewModel: FavoritesViewModel
+
 
     // Adapter for displaying a list of favorite repositories in the RecyclerView
     private lateinit var favoriteRepositoriesAdapter: FavoriteRepositoriesAdapter
@@ -141,10 +144,25 @@ class FavouritesFragment : Fragment() {
         favoriteRepositoriesAdapter =
             FavoriteRepositoriesAdapter(object : FavoriteRepositoriesAdapter.OnItemClickListener {
                 override fun itemClick(item: GitHubAccount) {
-                    TODO("Not yet implemented")
+                    // Create a bundle containing the selected repository and navigate to the WebViewFragment
+                    val bundle = Bundle().apply {
+                        putParcelable(TARGET_REPOSITORY, item)
+                    }
+                    navigateToWebView(bundle)
                 }
             })
         setupFavoriteRepositoriesRecyclerView()
+    }
+
+    /**
+     * Navigates to the WebViewFragment with the provided bundle.
+     * @param bundle The bundle containing data to be passed to the WebViewFragment.
+     */
+    private fun navigateToWebView(bundle: Bundle) {
+        findNavController().navigate(
+            R.id.action_favouritesFragment_to_webViewFragment,
+            bundle
+        )
     }
 
     /**

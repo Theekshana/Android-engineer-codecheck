@@ -47,8 +47,8 @@ class GitHubRepoDetailsFragment : Fragment() {
             false
         ).apply {
             // Initialize ViewModel using ViewModelProvider
-            viewModel = ViewModelProvider(requireActivity())[GitHubRepoDetailsViewModel::class.java]
-            favoritesViewModel = ViewModelProvider(requireActivity())[FavoritesViewModel::class.java]
+            viewModel = ViewModelProvider(this@GitHubRepoDetailsFragment)[GitHubRepoDetailsViewModel::class.java]
+            favoritesViewModel = ViewModelProvider(this@GitHubRepoDetailsFragment)[FavoritesViewModel::class.java]
 
             // Extract repository details from arguments
             selectedRepository = args.repository

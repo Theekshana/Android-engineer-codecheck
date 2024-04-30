@@ -41,5 +41,10 @@ object Constants {
      */
     const val GITHUB_REPOSITORY_DB_NAME = "github_repository_database"
 
+    /**
+     * Key for passing the target repository object between fragments using Bundle.
+     */
+    const val TARGET_REPOSITORY = "targetRepository"
+
 
 }
