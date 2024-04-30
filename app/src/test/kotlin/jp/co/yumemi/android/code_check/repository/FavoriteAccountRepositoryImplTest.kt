@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -83,5 +84,33 @@ class FavoriteAccountRepositoryImplTest {
         assertEquals(listOf(favoriteRepos), result)
     }
 
+    /**
+     * Unit test for verifying the behavior of [FavoriteAccountRepository.getFavoriteRepositories]
+     * when a database error occurs.
+     */
+    @Test
+    fun `test getFavoriteRepositories with database error`() = runBlocking {
+
+        // Stub the DAO to throw a RuntimeException when getAllFavorites is called
+        `when`(gitHubRepositoryDao.getAllFavorites())
+            .thenThrow(RuntimeException("Failed to fetch"))
+
+        // Call the method under test
+        val result = kotlin.runCatching {
+            favoriteAccountRepository.getFavoriteRepositories().toList()
+        }
+
+        // Assert that the result is a failure
+        assertTrue(result.isFailure)
+
+        // Assert that the exception thrown is a RuntimeException
+        assertTrue(result.exceptionOrNull() is RuntimeException)
+        
+        // Assert that the exception message matches the expected error message
+        assertEquals(
+            "Failed to fetch",
+            result.exceptionOrNull()?.message
+        )
+    }
 
 }
