@@ -45,7 +45,7 @@
     <fragment
         android:id="@+id/webViewFragment"
         android:name="jp.co.yumemi.android.code_check.views.favourite.WebViewFragment"
-        android:label="fragment_web_view"
+        android:label="@string/webPage"
         tools2:layout="@layout/fragment_web_view" >
         <argument
             android:name="targetRepository"
