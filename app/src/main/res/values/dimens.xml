@@ -45,17 +45,16 @@
     <dimen name="text_margin_8dp">8dp</dimen>
     <dimen name="txt_forks_card_view">16dp</dimen>
     <dimen name="card_view_landscape_width">150dp</dimen>
+    <dimen name="text_layout_margin_top">8dp</dimen>
+    <dimen name="text_layout_margin_start">8dp</dimen>
+    <dimen name="text_layout_margin_end">8dp</dimen>
+    <dimen name="card_view_corner_radius">8dp</dimen>
 
     /* Layout Repo Details Landscape */
     <dimen name="image_width_height">150dp</dimen>
     <dimen name="image_margin_8dp">8dp</dimen>
     <dimen name="language_card_view_margin_top">16dp</dimen>
     <dimen name="language_card_view_margin_bottom">32dp</dimen>
-
-    /* Layout Repo Details Landscape */
-    <dimen name="text_layout_margin_top">8dp</dimen>
-    <dimen name="text_layout_margin_start">8dp</dimen>
-    <dimen name="text_layout_margin_end">8dp</dimen>
 
     /* Search Bar */
     <dimen name="search_layout_margin_small">12dp</dimen>
