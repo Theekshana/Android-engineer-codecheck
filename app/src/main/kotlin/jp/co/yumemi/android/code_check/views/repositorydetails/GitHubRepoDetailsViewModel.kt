@@ -24,7 +24,7 @@ class GitHubRepoDetailsViewModel @Inject constructor() : ViewModel() {
      * repository details for which information needs to be displayed.
      * @param repositoryDetails A GitHubAccount object containing details about the repository.
      */
-    fun loadRepositoryDetails(repositoryDetails: GitHubAccount) {
+    fun loadRepositoryDetails(repositoryDetails: GitHubAccount?) {
 
         _repositoryDetails.value = repositoryDetails
 

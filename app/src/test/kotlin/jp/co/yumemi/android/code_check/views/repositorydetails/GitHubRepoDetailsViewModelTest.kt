@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer
 import jp.co.yumemi.android.code_check.model.GitHubAccount
 import jp.testdata.MockData.mockObject
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -61,4 +62,17 @@ class GitHubRepoDetailsViewModelTest {
 
     }
 
+    /**
+     * Test to verify that loading repository details with a null repository
+     * updates the LiveData to null.
+     */
+    @Test
+    fun `testLoadRepositoryList null repository`() {
+
+        // Call the function to load the repository data with null repository
+        viewModel.loadRepositoryDetails(null)
+
+        // Then verify that the repository details LiveData is null after loading with null input
+        assertNull(viewModel.repositoryDetails.value)
+    }
 }
