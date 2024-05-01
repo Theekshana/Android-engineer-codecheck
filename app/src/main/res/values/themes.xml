@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.AndroidEngineerCodeCheck" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Base.AndroidEngineerCodeCheck" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -20,5 +20,11 @@
         <item name="hintEnabled">false</item>
         <item name="boxBackgroundMode">none</item>
     </style>
+
+    <!--
+    This style defines the overall theme for the Android Engineer CodeCheck app.
+    It inherits from the Base.AndroidEngineerCodeCheck style and provides additional customizations.
+    -->
+    <style name="Theme.AndroidEngineerCodeCheck" parent="Base.AndroidEngineerCodeCheck" />
 
 </resources>

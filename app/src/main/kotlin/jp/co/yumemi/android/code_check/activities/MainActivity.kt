@@ -7,6 +7,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -15,8 +16,11 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.yumemi.android.code_check.R
+import jp.co.yumemi.android.code_check.constants.Constants.SPLASH_SCREEN_TIME
 import jp.co.yumemi.android.code_check.databinding.ActivityMainBinding
 import jp.co.yumemi.android.code_check.util.NetworkUtils
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 
 /**
  * The main activity of the application.
@@ -37,6 +41,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        runBlocking {
+            installSplashScreen()
+            delay(SPLASH_SCREEN_TIME)
+        }
 
         // Initialize NetworkUtils with ConnectivityManager instance
         getSystemService(Context.CONNECTIVITY_SERVICE)

@@ -62,6 +62,7 @@ dependencies {
     def androidx_room_version = '2.6.1'
     def coroutines_test_version = '1.7.3'
     def androidx_arch_core_test_version = '2.2.0'
+    def splashscreen_version = '1.0.1'
 
     // ——— Common AndroidX libraries ———++
     implementation "androidx.core:core-ktx:$androidx_core_ktx_version"
@@ -117,6 +118,9 @@ dependencies {
     ksp "androidx.room:room-compiler:$androidx_room_version"
     implementation "androidx.room:room-ktx:$androidx_room_version"
     androidTestImplementation "androidx.room:room-testing:$androidx_room_version"
+
+    //  ———  Splash Screen  ——— ++
+    implementation "androidx.core:core-splashscreen:$splashscreen_version"
 
 
 }

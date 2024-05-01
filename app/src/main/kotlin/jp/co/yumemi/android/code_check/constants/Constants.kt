@@ -56,4 +56,9 @@ object Constants {
      */
     const val TARGET_REPOSITORY = "targetRepository"
 
+    /**
+     * The duration (in milliseconds) for which the splash screen is displayed.
+     */
+    const val SPLASH_SCREEN_TIME = 1000L
+
 }
