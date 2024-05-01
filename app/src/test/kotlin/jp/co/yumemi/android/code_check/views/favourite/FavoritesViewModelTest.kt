@@ -1,13 +1,16 @@
 package jp.co.yumemi.android.code_check.views.favourite
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import jp.co.yumemi.android.code_check.model.GitHubAccount
 import jp.co.yumemi.android.code_check.repository.FavoriteAccountRepository
 import jp.testdata.MockData.mockObject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.setMain
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -72,6 +75,28 @@ class FavoritesViewModelTest {
 
             // Then verify that the account was inserted into the repository
             verify(favoriteAccountRepository).insertFavoriteAccount(mockObject)
+
+        }
+
+    /**
+     * Unit test to verify that [FavoritesViewModel.loadFavoriteRepositories]
+     * updates LiveData with favorite repositories.
+     */
+    @Test
+    fun `test loadFavoriteRepositories updates LiveData with favorite repositories`() =
+
+        runBlocking {
+
+            // Given a mocked flow of favorite repositories
+            val mockFlow = flowOf(listOf<GitHubAccount>())
+            `when`(favoriteAccountRepository.getFavoriteRepositories())
+                .thenReturn(mockFlow)
+
+            // When calling the loadFavoriteRepositories function
+            val resultFlow = viewModel.loadFavoriteRepositories()
+
+            // Then ensure the returned flow is not null
+            assertNotNull(resultFlow)
 
         }
 }

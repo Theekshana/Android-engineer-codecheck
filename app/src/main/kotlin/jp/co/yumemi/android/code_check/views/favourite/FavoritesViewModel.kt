@@ -56,7 +56,7 @@ class FavoritesViewModel @Inject constructor(
      * This method fetches the list of favorite repositories from the repository
      * and updates the [_favoriteRepositories] LiveData with the fetched data.
      */
-    private fun loadFavoriteRepositories() {
+    fun loadFavoriteRepositories() {
         viewModelScope.launch {
             favoriteAccountRepository.getFavoriteRepositories().collect { favoriteRepos ->
 
