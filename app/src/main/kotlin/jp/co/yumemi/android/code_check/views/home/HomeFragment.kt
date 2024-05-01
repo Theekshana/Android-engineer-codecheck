@@ -67,7 +67,15 @@ class HomeFragment : Fragment() {
         // Initialize the RecyclerView for displaying GitHub repositories
         initializeGitHubRepositoryAdapter()
 
-        // Observe GitHub accounts LiveData and update UI accordingly
+        // Observe GitHub accounts
+        observeGitHubAccounts()
+
+    }
+
+    /**
+     * Observes the LiveData for GitHub accounts and updates the UI accordingly.
+     */
+    private fun observeGitHubAccounts() {
         lifecycleScope.launch {
             binding.apply {
                 viewModel.githubAccounts.observe(viewLifecycleOwner) {
@@ -90,7 +98,6 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-
     }
 
     /**
