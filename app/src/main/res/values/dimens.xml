@@ -62,6 +62,10 @@
     <dimen name="search_card_corner_radius">12dp</dimen>
     <dimen name="search_card_elevation">14dp</dimen>
 
+    /* App Info Fragment */
+    <dimen name="text_view_margin">8dp</dimen>
+    <dimen name="text_view_margin_top">16dp</dimen>
+
 
 
 </resources>
