@@ -17,4 +17,19 @@
     <string name="successfullyDeleted">Successfully deleted...</string>
     <string name="undo">Undo</string>
     <string name="webPage">Web Page</string>
+    <string name="gitHubApp">GitHub Repo Search App</string>
+    <string name="txtWelcome">Welcome to the GitHub Repo Search App</string>
+    <string name="features">Features</string>
+    <string name="searchFunction">1.Search Functionality</string>
+    <string name="repoDetails">2.Repository Details</string>
+    <string name="webView">4.Web View Integration</string>
+    <string name="howToUse">How to Use:</string>
+    <string name="enterKeyword">Enter keywords in the search bar</string>
+    <string name="detailedInformation">Tap on a repository to view its detailed information</string>
+    <string name="saveRepository">Save repositories to your favourites list</string>
+    <string name="swipeToDelete">Swipe to delete repositories from favourites list if needed</string>
+    <string name="explore">Explore repository by opening web page</string>
+    <string name="note">Note:</string>
+    <string name="requiresInternetConnection">This app requires an internet connection</string>
+    <string name="favourites">3.Favourites Repositories</string>
 </resources>

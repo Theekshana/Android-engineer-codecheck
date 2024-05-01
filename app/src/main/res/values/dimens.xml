@@ -46,5 +46,11 @@
     <dimen name="language_card_view_margin_top">16dp</dimen>
     <dimen name="language_card_view_margin_bottom">32dp</dimen>
 
+    /* Layout Repo Details Landscape */
+    <dimen name="text_layout_margin_top">8dp</dimen>
+    <dimen name="text_layout_margin_start">8dp</dimen>
+    <dimen name="text_layout_margin_end">8dp</dimen>
+
+
 
 </resources>
