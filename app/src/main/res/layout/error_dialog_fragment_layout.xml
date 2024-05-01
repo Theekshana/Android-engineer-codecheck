@@ -13,11 +13,11 @@
         android:paddingEnd="60dp">
 
         <ImageView
-            android:id="@+id/imgInvalidUserInput"
+            android:id="@+id/imgSuccessOrError"
             android:layout_width="@dimen/image_layout_width"
             android:layout_height="@dimen/image_layout_height"
             android:layout_marginTop="@dimen/image_layout_margin_top"
-            android:src="@drawable/error"
+            android:src="@drawable/ic_error"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,9 +31,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/textview_invalid_user_input_margin_top"
-            app:layout_constraintEnd_toEndOf="@+id/imgInvalidUserInput"
-            app:layout_constraintStart_toStartOf="@+id/imgInvalidUserInput"
-            app:layout_constraintTop_toBottomOf="@+id/imgInvalidUserInput" />
+            app:layout_constraintEnd_toEndOf="@+id/imgSuccessOrError"
+            app:layout_constraintStart_toStartOf="@+id/imgSuccessOrError"
+            app:layout_constraintTop_toBottomOf="@+id/imgSuccessOrError" />
 
         <Button
             android:id="@+id/btnOk"

@@ -14,7 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import jp.co.yumemi.android.code_check.R
-import jp.co.yumemi.android.code_check.common.ErrorMessageDialogFragment
+import jp.co.yumemi.android.code_check.common.AlertDialogFragment
 import jp.co.yumemi.android.code_check.common.hideKeyboard
 import jp.co.yumemi.android.code_check.common.initRecyclerView
 import jp.co.yumemi.android.code_check.common.isVisible
@@ -159,7 +159,7 @@ class HomeFragment : Fragment() {
                     val userInput = viewModel.currentSearchQuery?.trim()
 
                     if (userInput.isNullOrEmpty()) {
-                        showErrorMessageDialog(getString(R.string.invalidInput))
+                        showErrorMessageDialog(getString(R.string.invalidInput), true)
                         return@setOnEditorActionListener true
                     } else {
                         hideKeyboard(editText)
@@ -187,7 +187,7 @@ class HomeFragment : Fragment() {
                 viewModel.fetchGithubAccounts(userInput)
             }
         } else {
-            showErrorMessageDialog(getString(R.string.noInternetConnection))
+            showErrorMessageDialog(getString(R.string.noInternetConnection), true)
         }
     }
 
@@ -198,8 +198,8 @@ class HomeFragment : Fragment() {
      *
      * @param message The error message to be displayed.
      */
-    private fun showErrorMessageDialog(message: String) {
-        val dialogFragment = ErrorMessageDialogFragment.newInstance(message)
+    private fun showErrorMessageDialog(message: String, isError: Boolean) {
+        val dialogFragment = AlertDialogFragment.newInstance(message, isError)
         dialogFragment.show(childFragmentManager, getString(R.string.errorMessageDialog))
     }
 
