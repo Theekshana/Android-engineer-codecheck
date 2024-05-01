@@ -16,7 +16,7 @@ import jp.co.yumemi.android.code_check.databinding.ErrorDialogFragmentLayoutBind
 /**
  * A DialogFragment used to display an error message.
  */
-class AlertDialogFragment : DialogFragment() {
+class ErrorMessageDialogFragment : DialogFragment() {
 
     // View binding for the layout
     private lateinit var binding: ErrorDialogFragmentLayoutBinding
@@ -27,9 +27,9 @@ class AlertDialogFragment : DialogFragment() {
          * @param message The error message to be displayed.
          * @return An instance of ErrorMessageDialogFragment.
          */
-        fun newInstance(message: String, isError: Boolean): AlertDialogFragment {
+        fun newInstance(message: String, isError: Boolean): ErrorMessageDialogFragment {
             // Create a new instance of ErrorMessageDialogFragment
-            val fragment = AlertDialogFragment()
+            val fragment = ErrorMessageDialogFragment()
             // Create arguments bundle and add the error message
             val args = Bundle()
             args.putString(Constants.ARG_MESSAGE, message)

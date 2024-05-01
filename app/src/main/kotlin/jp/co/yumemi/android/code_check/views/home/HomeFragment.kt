@@ -14,7 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import jp.co.yumemi.android.code_check.R
-import jp.co.yumemi.android.code_check.common.AlertDialogFragment
+import jp.co.yumemi.android.code_check.common.ErrorMessageDialogFragment
 import jp.co.yumemi.android.code_check.common.hideKeyboard
 import jp.co.yumemi.android.code_check.common.initRecyclerView
 import jp.co.yumemi.android.code_check.common.isVisible
@@ -50,8 +50,11 @@ class HomeFragment : Fragment() {
             false
         ).apply {
             // Initialize ViewModel using ViewModelProvider
-            viewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
-            githubVM = viewModel
+            ViewModelProvider(requireActivity())[HomeViewModel::class.java].apply {
+                viewModel = this
+                githubVM = this
+            }
+            // Setting the lifecycle owner for data binding
             lifecycleOwner = this@HomeFragment
         }
 
@@ -159,7 +162,7 @@ class HomeFragment : Fragment() {
                     val userInput = viewModel.currentSearchQuery?.trim()
 
                     if (userInput.isNullOrEmpty()) {
-                        showErrorMessageDialog(getString(R.string.invalidInput), true)
+                        showErrorMessageDialog(getString(R.string.invalidInput))
                         return@setOnEditorActionListener true
                     } else {
                         hideKeyboard(editText)
@@ -187,7 +190,7 @@ class HomeFragment : Fragment() {
                 viewModel.fetchGithubAccounts(userInput)
             }
         } else {
-            showErrorMessageDialog(getString(R.string.noInternetConnection), true)
+            showErrorMessageDialog(getString(R.string.noInternetConnection))
         }
     }
 
@@ -198,8 +201,8 @@ class HomeFragment : Fragment() {
      *
      * @param message The error message to be displayed.
      */
-    private fun showErrorMessageDialog(message: String, isError: Boolean) {
-        val dialogFragment = AlertDialogFragment.newInstance(message, isError)
+    private fun showErrorMessageDialog(message: String) {
+        val dialogFragment = ErrorMessageDialogFragment.newInstance(message, true)
         dialogFragment.show(childFragmentManager, getString(R.string.errorMessageDialog))
     }
 

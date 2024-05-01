@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import jp.co.yumemi.android.code_check.R
-import jp.co.yumemi.android.code_check.common.AlertDialogFragment
+import jp.co.yumemi.android.code_check.common.ErrorMessageDialogFragment
 import jp.co.yumemi.android.code_check.databinding.FragmentRepoDetailsBinding
 import jp.co.yumemi.android.code_check.model.GitHubAccount
 import jp.co.yumemi.android.code_check.views.favourite.FavoritesViewModel
@@ -93,8 +93,7 @@ class GitHubRepoDetailsFragment : Fragment() {
      */
     private fun showSuccessMessage(message: String) {
         // Create and show a dialog fragment based on the provided message and error flag
-        val isError = message.contains("error", true)
-        val dialogFragment = AlertDialogFragment.newInstance(message, isError)
+        val dialogFragment = ErrorMessageDialogFragment.newInstance(message, false)
         dialogFragment.show(childFragmentManager, getString(R.string.successMessageDialog))
     }
 
