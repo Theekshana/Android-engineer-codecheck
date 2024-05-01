@@ -4,6 +4,12 @@
     /* Layout Repo List */
     <dimen name="text_layout_margin_horizontal">16dp</dimen>
     <dimen name="text_layout_margin_vertical">8dp</dimen>
+    <dimen name="layout_marginHorizontal">16dp</dimen>
+    <dimen name="layout_marginVertical">20dp</dimen>
+    <dimen name="card_view_margin">5dp</dimen>
+    <dimen name="card_view_padding">10dp</dimen>
+    <dimen name="card_corner_radius">10dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
 
     /* Error Dialog Fragment Layout */
     <dimen name="layout_padding_top">20dp</dimen>
@@ -50,6 +56,11 @@
     <dimen name="text_layout_margin_top">8dp</dimen>
     <dimen name="text_layout_margin_start">8dp</dimen>
     <dimen name="text_layout_margin_end">8dp</dimen>
+
+    /* Search Bar */
+    <dimen name="search_layout_margin_small">12dp</dimen>
+    <dimen name="search_card_corner_radius">12dp</dimen>
+    <dimen name="search_card_elevation">14dp</dimen>
 
 
 

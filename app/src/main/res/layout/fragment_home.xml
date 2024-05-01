@@ -19,9 +19,9 @@
             android:id="@+id/searchBar"
             android:layout_width="0dp"
             android:layout_height="?attr/actionBarSize"
-            android:layout_margin="12dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="8dp"
+            android:layout_margin="@dimen/search_layout_margin_small"
+            app:cardCornerRadius="@dimen/search_card_corner_radius"
+            app:cardElevation="@dimen/search_card_elevation"
             app:layout_constraintBottom_toTopOf="@id/searchResultsRecyclerView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,14 +45,14 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/searchInputText"
+                    style="@style/txtLarge"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
                     android:hint="@string/searchInputText_hint"
                     android:imeOptions="actionSearch"
                     android:inputType="text"
-                    android:text="@={githubVM.currentSearchQuery}"
-                    android:textSize="12sp" />
+                    android:text="@={githubVM.currentSearchQuery}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

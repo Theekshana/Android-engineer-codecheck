@@ -26,10 +26,15 @@
     </style>
 
     <!-- Layout Github Repository Details Style-->
-    <style name="txtLarge">
+    <style name="txtLargeBold">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="txtLarge">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="txtSmall">

@@ -57,7 +57,7 @@
 
                 <TextView
                     android:id="@+id/nameView"
-                    style="@style/txtLarge"
+                    style="@style/txtLargeBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/name_view_text_margin_top"
@@ -69,7 +69,7 @@
 
                 <TextView
                     android:id="@+id/languageView"
-                    style="@style/txtLarge"
+                    style="@style/txtLargeBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/language_view_text_view_margin_top_"
@@ -98,7 +98,7 @@
 
                 <TextView
                     android:id="@+id/txtStarsView"
-                    style="@style/txtLarge"
+                    style="@style/txtLargeBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/text_margin_8dp"
@@ -138,7 +138,7 @@
 
                 <TextView
                     android:id="@+id/txtWatchersView"
-                    style="@style/txtLarge"
+                    style="@style/txtLargeBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/text_margin_8dp"
@@ -179,7 +179,7 @@
 
                 <TextView
                     android:id="@+id/txtForksView"
-                    style="@style/txtLarge"
+                    style="@style/txtLargeBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/text_margin_8dp"
@@ -221,7 +221,7 @@
 
                 <TextView
                     android:id="@+id/txtOpenIssuesView"
-                    style="@style/txtLarge"
+                    style="@style/txtLargeBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/text_margin_8dp"

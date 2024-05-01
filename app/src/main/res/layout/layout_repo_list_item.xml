@@ -9,23 +9,36 @@
             type="jp.co.yumemi.android.code_check.model.GitHubAccount" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground">
+        android:layout_margin="@dimen/card_view_margin"
+        android:background="?attr/selectableItemBackground"
+        android:padding="@dimen/card_view_padding"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintDimensionRatio="1:1">
 
-        <TextView
-            android:id="@+id/repositoryNameView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            style="@style/repositoryNameTextViewStyle"
-            android:layout_marginHorizontal="@dimen/text_layout_margin_horizontal"
-            android:layout_marginVertical="@dimen/text_layout_margin_vertical"
-            android:text="@{githubAccount.name}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/repositoryNameView"
+                style="@style/txtLargeBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/layout_marginHorizontal"
+                android:layout_marginVertical="@dimen/layout_marginVertical"
+                android:text="@{githubAccount.name}"
+                shortName="@{githubAccount.name}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 </layout>
