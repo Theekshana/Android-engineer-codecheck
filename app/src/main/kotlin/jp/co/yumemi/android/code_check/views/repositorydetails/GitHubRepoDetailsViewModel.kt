@@ -12,9 +12,7 @@ import javax.inject.Inject
  * through LiveData.
  */
 @HiltViewModel
-class GitHubRepoDetailsViewModel @Inject constructor(
-
-) : ViewModel() {
+class GitHubRepoDetailsViewModel @Inject constructor() : ViewModel() {
 
     // LiveData to hold the repository details
     private val _repositoryDetails = MutableLiveData<GitHubAccount>(null)
