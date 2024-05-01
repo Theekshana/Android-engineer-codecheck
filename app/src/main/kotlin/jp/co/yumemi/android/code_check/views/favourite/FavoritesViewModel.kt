@@ -23,18 +23,6 @@ class FavoritesViewModel @Inject constructor(
     private val favoriteAccountRepository: FavoriteAccountRepository
 ) : ViewModel() {
 
-    /**
-     * Initializes the FavoritesViewModel by loading the list of favorite repositories.
-     *
-     * This initializer automatically triggers the loading of the list of favorite repositories
-     * when the FavoritesViewModel is created. It calls the loadFavoriteRepositories method
-     * to fetch the list of repositories from the repository and update the LiveData accordingly.
-     * This ensures that the UI is immediately populated with the latest data upon ViewModel creation.
-     */
-    init {
-        loadFavoriteRepositories()
-    }
-
     // LiveData to hold the list of favorite repositories
     private val _favoriteRepositories = MutableLiveData<List<GitHubAccount>>()
     val favoriteRepositories: LiveData<List<GitHubAccount>> get() = _favoriteRepositories

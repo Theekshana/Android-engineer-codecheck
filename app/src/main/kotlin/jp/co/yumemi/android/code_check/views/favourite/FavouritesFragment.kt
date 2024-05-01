@@ -62,6 +62,9 @@ class FavouritesFragment : Fragment() {
         // Set up swipe-to-delete functionality for repositories
         setupItemTouchHelper()
 
+        // Load favorite repositories from the ViewModel
+        viewModel.loadFavoriteRepositories()
+
     }
 
     /**

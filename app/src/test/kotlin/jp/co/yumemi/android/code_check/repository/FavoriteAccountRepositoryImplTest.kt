@@ -17,17 +17,27 @@ import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
 
+/**
+ * Unit tests for the [FavoriteAccountRepositoryImpl] class.
+ */
 @RunWith(MockitoJUnitRunner::class)
 class FavoriteAccountRepositoryImplTest {
 
+    // Mocked DAO for the GitHub repository
     @Mock
     private lateinit var gitHubRepositoryDao: GitHubRepositoryDao
 
     private lateinit var favoriteAccountRepository: FavoriteAccountRepositoryImpl
 
+    /**
+     * Set up the test environment.
+     */
     @Before
     fun setUp() {
+        // Initialize Mockito annotations
         MockitoAnnotations.openMocks(this)
+
+        // Create an instance of the repository to be tested
         favoriteAccountRepository = FavoriteAccountRepositoryImpl(gitHubRepositoryDao)
     }
 
