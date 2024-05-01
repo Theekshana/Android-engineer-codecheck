@@ -99,4 +99,21 @@ class FavoritesViewModelTest {
             assertNotNull(resultFlow)
 
         }
+
+    /**
+     * Tests that deleting a favorite account from the view model
+     * calls the delete function in the repository.
+     */
+    @Test
+    fun `test deleteFavoriteAccount deletes specified account from repository`() =
+
+        runBlocking {
+
+            // When deleting the account from the view model
+            viewModel.deleteFavoriteAccount(mockObject)
+
+            // Then verify that the account deletion function is called in the repository
+            verify(favoriteAccountRepository).deleteFavoriteAccount(mockObject)
+
+        }
 }
