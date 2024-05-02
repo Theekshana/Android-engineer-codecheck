@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+    This XML file represents the bottom navigation menu items.
+    It includes menu items for navigating to the Home, Favourite, and Info screens.
+    Each item has an icon and a title, which are defined using drawable resources
+    and string resources respectively.
+-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Home menu item -->
+    <item
+        android:id="@+id/miHome"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
+
+    <!-- Favourite menu item -->
+    <item
+        android:id="@+id/miFavourite"
+        android:icon="@drawable/ic_fav"
+        android:title="@string/favourite" />
+
+    <!-- Info menu item -->
+    <item
+        android:id="@+id/miAbout"
+        android:icon="@drawable/ic_info"
+        android:title="@string/info" />
+
+</menu>

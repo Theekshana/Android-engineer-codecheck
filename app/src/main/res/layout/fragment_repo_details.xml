@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Data binding layout root element -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Data variable for binding -->
+    <data>
+
+        <variable
+            name="repoDetails"
+            type="jp.co.yumemi.android.code_check.views.repositorydetails.GitHubRepoDetailsViewModel" />
+    </data>
+
+    <!-- Main ConstraintLayout container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- ImageView for repository owner's icon -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ownerIconView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="@dimen/image_padding"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{repoDetails.repositoryDetails.owner.avatarUrl}"
+            app:layout_constraintBottom_toTopOf="@+id/centerHorizontalCenterGuide"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:shapeAppearanceOverlay="@style/roundedImage"
+            app:strokeColor="@color/black"
+            app:strokeWidth="@dimen/round_image_stroke_width"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <!-- Guideline for centering horizontally -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/centerHorizontalCenterGuide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.35" />
+
+        <!-- CardView for displaying repository language -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/languageCardView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/language_view_card_view_margin"
+            android:layout_marginEnd="@dimen/language_view_card_view_margin"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/language_card_view_corner_radius"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ownerIconView">
+
+            <!-- Nested ConstraintLayout for language details -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- TextView for repository name -->
+                <TextView
+                    android:id="@+id/nameView"
+                    style="@style/txtLargeBold"
+                    shortName="@{repoDetails.repositoryDetails.name}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/name_view_text_margin_top"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- TextView for repository language -->
+                <TextView
+                    android:id="@+id/languageView"
+                    style="@style/txtLargeBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/language_view_text_view_margin_top_"
+                    android:layout_marginBottom="@dimen/language_view_text_view_margin_bottom_"
+                    android:text="@{@string/language + repoDetails.repositoryDetails.language}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/nameView"
+                    app:layout_constraintStart_toStartOf="@+id/nameView"
+                    app:layout_constraintTop_toBottomOf="@+id/nameView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView for displaying repository stars count -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/starsCardView"
+            android:layout_width="@dimen/card_view_layout_width_"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/text_margin_8dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/languageCardView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="VisualLintBounds">
+
+                <TextView
+                    android:id="@+id/txtStarsView"
+                    style="@style/txtLargeBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_8dp"
+                    android:text="@string/stars"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/starsView"
+                    style="@style/txtSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_8dp"
+                    android:layout_marginBottom="@dimen/text_margin_8dp"
+                    android:gravity="center"
+                    android:text="@{repoDetails.repositoryDetails.stargazersCount.toString()}"
+                    app:layout_constraintEnd_toEndOf="@+id/txtStarsView"
+                    app:layout_constraintStart_toStartOf="@+id/txtStarsView"
+                    app:layout_constraintTop_toBottomOf="@+id/txtStarsView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView for displaying repository watchers count -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/txtWatchersCardView"
+            android:layout_width="@dimen/card_view_layout_width_"
+            android:layout_height="0dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:layout_constraintBottom_toBottomOf="@+id/starsCardView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="@+id/starsCardView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="VisualLintBounds">
+
+                <TextView
+                    android:id="@+id/txtWatchersView"
+                    style="@style/txtLargeBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_8dp"
+                    android:text="@string/watchers"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/watchersCount"
+                    style="@style/txtSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_8dp"
+                    android:layout_marginBottom="@dimen/text_margin_8dp"
+                    android:gravity="center"
+                    android:text="@{repoDetails.repositoryDetails.watchersCount.toString()}"
+                    app:layout_constraintEnd_toEndOf="@+id/txtWatchersView"
+                    app:layout_constraintStart_toStartOf="@+id/txtWatchersView"
+                    app:layout_constraintTop_toBottomOf="@+id/txtWatchersView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView for displaying repository forks count -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/txtForksCardView"
+            android:layout_width="@dimen/card_view_layout_width_"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/txt_forks_card_view"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:layout_constraintEnd_toEndOf="@+id/starsCardView"
+            app:layout_constraintStart_toStartOf="@+id/starsCardView"
+            app:layout_constraintTop_toBottomOf="@+id/starsCardView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="VisualLintBounds">
+
+                <TextView
+                    android:id="@+id/txtForksView"
+                    style="@style/txtLargeBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_8dp"
+                    android:text="@string/forks"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/forksView"
+                    style="@style/txtSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_8dp"
+                    android:layout_marginBottom="@dimen/text_margin_8dp"
+                    android:gravity="center"
+                    android:text="@{repoDetails.repositoryDetails.forksCount.toString()}"
+                    app:layout_constraintEnd_toEndOf="@+id/txtForksView"
+                    app:layout_constraintStart_toStartOf="@+id/txtForksView"
+                    app:layout_constraintTop_toBottomOf="@+id/txtForksView" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView for displaying repository open issues count -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/txtOpenIssuesCardView"
+            android:layout_width="@dimen/card_view_layout_width_"
+            android:layout_height="0dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:layout_constraintBottom_toBottomOf="@+id/txtForksCardView"
+            app:layout_constraintEnd_toEndOf="@+id/txtWatchersCardView"
+            app:layout_constraintStart_toStartOf="@+id/txtWatchersCardView"
+            app:layout_constraintTop_toTopOf="@+id/txtForksCardView"
+            tools:ignore="TextSizeCheck">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="VisualLintBounds">
+
+                <TextView
+                    android:id="@+id/txtOpenIssuesView"
+                    style="@style/txtLargeBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_8dp"
+                    android:text="@string/openIssues"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/openIssuesView"
+                    style="@style/txtSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_8dp"
+                    android:layout_marginBottom="@dimen/text_margin_8dp"
+                    android:gravity="center"
+                    android:text="@{repoDetails.repositoryDetails.openIssuesCount.toString()}"
+                    app:layout_constraintEnd_toEndOf="@+id/txtOpenIssuesView"
+                    app:layout_constraintStart_toStartOf="@+id/txtOpenIssuesView"
+                    app:layout_constraintTop_toBottomOf="@+id/txtOpenIssuesView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- FloatingActionButton for saving repository -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnFabSaveRepository"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/fab_layout_margin_top"
+            android:backgroundTint="@color/dark_red"
+            android:contentDescription="@string/save_repository"
+            android:src="@drawable/ic_save"
+            app:layout_constraintEnd_toEndOf="@+id/txtOpenIssuesCardView"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/txtOpenIssuesCardView"
+            app:layout_constraintTop_toBottomOf="@+id/txtOpenIssuesCardView"
+            app:tint="@color/red"
+            tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
+
+        <!-- Guideline for centering vertically -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

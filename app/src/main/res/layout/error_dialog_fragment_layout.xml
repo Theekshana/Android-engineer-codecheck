@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?><!-- This is the layout file for displaying an error or success message with a button -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ConstraintLayout is used as the root layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:paddingStart="@dimen/layout_padding_start"
+        android:paddingTop="@dimen/layout_padding_top"
+        android:paddingEnd="@dimen/layout_padding_end"
+        android:paddingBottom="@dimen/layout_padding_bottom">
+
+        <!-- ImageView for displaying success or error icon -->
+        <ImageView
+            android:id="@+id/imgSuccessOrError"
+            style="@style/txtLarge"
+            android:layout_width="@dimen/image_layout_width"
+            android:layout_height="@dimen/image_layout_height"
+            android:layout_marginTop="@dimen/image_layout_margin_top"
+            android:src="@drawable/ic_error"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription,ImageContrastCheck"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <!-- TextView for displaying success or error message -->
+        <TextView
+            android:id="@+id/txtSuccessOrErrorMessage"
+            style="@style/repositoryNameTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/textview_invalid_user_input_margin_top"
+            app:layout_constraintEnd_toEndOf="@+id/imgSuccessOrError"
+            app:layout_constraintStart_toStartOf="@+id/imgSuccessOrError"
+            app:layout_constraintTop_toBottomOf="@+id/imgSuccessOrError" />
+
+        <!-- Button for retrying action -->
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_ok_layout_height"
+            android:layout_marginTop="@dimen/button_ok_layout_margin_top"
+            android:layout_marginBottom="@dimen/button_ok_layout_margin_bottom"
+            android:text="@string/retry"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtSuccessOrErrorMessage"
+            app:layout_constraintStart_toStartOf="@+id/txtSuccessOrErrorMessage"
+            app:layout_constraintTop_toBottomOf="@+id/txtSuccessOrErrorMessage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

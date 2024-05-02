@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?><!-- String resources for the application -->
+<resources>
+
+    <!-- App name -->
+    <string name="app_name">Android Engineer CodeCheck</string>
+
+    <!-- Search input hint -->
+    <string name="searchInputText_hint">GitHub のリポジトリを検索できるよー</string>
+
+    <!-- Retry button text -->
+    <string name="retry">リトライ</string>
+
+    <!-- Error message for invalid input -->
+    <string name="invalidInput">有効な入力を入力してください。</string>
+
+    <!-- Error message for no internet connection -->
+    <string name="noInternetConnection">インターネットに接続していません</string>
+
+    <!-- Error message dialog title -->
+    <string name="errorMessageDialog">エラーメッセージダイアログ</string>
+
+    <!-- Success message dialog title -->
+    <string name="successMessageDialog">成功メッセージダイアログ</string>
+
+    <!-- Navigation drawer menu item: Home -->
+    <string name="homeFragment">ホーム</string>
+
+    <!-- Navigation drawer menu item: Details -->
+    <string name="detailsFragment">詳細</string>
+
+    <!-- Navigation drawer menu item: Favourites -->
+    <string name="favouritesFragment">お気に入り</string>
+
+    <!-- Navigation drawer menu item: Information -->
+    <string name="appInfoFragment">情報</string>
+
+    <!-- GitHub repository detail: Stars -->
+    <string name="stars">スター</string>
+
+    <!-- GitHub repository detail: Watchers -->
+    <string name="watchers">ウォッチャー</string>
+
+    <!-- GitHub repository detail: Forks -->
+    <string name="forks">フォーク</string>
+
+    <!-- GitHub repository detail: Open issues -->
+    <string name="openIssues">オープンイシュー</string>
+
+    <!-- Success message for deletion -->
+    <string name="successfullyDeleted">正常に削除されました…</string>
+
+    <!-- Undo action -->
+    <string name="undo">元に戻す</string>
+
+    <!-- Web page -->
+    <string name="webPage">ウェブページ</string>
+
+    <!-- GitHub App -->
+    <string name="gitHubApp">GitHub リポジトリ検索アプリ</string>
+
+    <!-- Welcome message -->
+    <string name="txtWelcome">GitHub リポジトリ検索アプリへようこそ</string>
+
+    <!-- Features section heading -->
+    <string name="features">特徴</string>
+
+    <!-- Feature: Search Functionality -->
+    <string name="searchFunction">1. 検索機能</string>
+
+    <!-- Feature: Repository Details -->
+    <string name="repoDetails">2. リポジトリの詳細</string>
+
+    <!-- Favourites section heading -->
+    <string name="favourites">3. お気に入りのリポジトリ</string>
+
+    <!-- Feature: Web View Integration -->
+    <string name="webView">4. ウェブビュー統合</string>
+
+    <!-- How to Use section heading -->
+    <string name="howToUse">使い方:</string>
+
+    <!-- How to Use: Enter keywords in the search bar -->
+    <string name="enterKeyword">検索バーにキーワードを入力してください</string>
+
+    <!-- How to Use: Tap on a repository to view its detailed information -->
+    <string name="detailedInformation">リポジトリをタップして詳細情報を表示します</string>
+
+    <!-- How to Use: Save repositories to your favourites list -->
+    <string name="saveRepository">リポジトリをお気に入りリストに保存します</string>
+
+    <!-- How to Use: Swipe to delete repositories from favourites list if needed -->
+    <string name="swipeToDelete">必要に応じてお気に入りリストからリポジトリを削除します</string>
+
+    <!-- How to Use: Explore repository by opening web page -->
+    <string name="explore">ウェブページを開いてリポジトリを探索します</string>
+
+    <!-- Note section heading -->
+    <string name="note">注意:</string>
+
+    <!-- Note: This app requires an internet connection -->
+    <string name="requiresInternetConnection">このアプリにはインターネット接続が必要です</string>
+
+    <!-- Success message for saving -->
+    <string name="savedSuccess">正常に保存されました…</string>
+
+    <!-- Home navigation item -->
+    <string name="home">ホーム</string>
+
+    <!-- Favourite navigation item -->
+    <string name="favourite">お気に入り</string>
+
+    <!-- Info navigation item -->
+    <string name="info">情報</string>
+
+    <!-- Language prefix -->
+    <string name="language">言語 : </string>
+
+    <!-- Button content description for saving repository -->
+    <string name="save_repository">リポジトリを保存する</string>
+
+</resources>
