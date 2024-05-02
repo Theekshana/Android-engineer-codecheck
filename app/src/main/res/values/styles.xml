@@ -25,22 +25,4 @@
         <item name="android:textSize">16sp</item>
     </style>
 
-    <!-- Layout Github Repository Details Style-->
-    <style name="txtLarge">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="txtSmall">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">16sp</item>
-    </style>
-
-    <style name="txtSmallBold">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">16sp</item>
-    </style>
-
 </resources>

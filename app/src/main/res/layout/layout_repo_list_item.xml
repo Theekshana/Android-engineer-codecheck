@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Data binding variable for GitHub account -->
     <data>
 
         <variable
@@ -9,23 +10,39 @@
             type="jp.co.yumemi.android.code_check.model.GitHubAccount" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!-- CardView to display repository information -->
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground">
+        android:layout_margin="@dimen/card_view_margin"
+        android:background="?attr/selectableItemBackground"
+        android:padding="@dimen/card_view_padding"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintDimensionRatio="1:1">
 
-        <TextView
-            android:id="@+id/repositoryNameView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            style="@style/repositoryNameTextViewStyle"
-            android:layout_marginHorizontal="@dimen/text_layout_margin_horizontal"
-            android:layout_marginVertical="@dimen/text_layout_margin_vertical"
-            android:text="@{githubAccount.name}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <!-- ConstraintLayout to hold the views -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- TextView to display the repository name -->
+            <TextView
+                android:id="@+id/repositoryNameView"
+                style="@style/txtLargeBold"
+                shortName="@{githubAccount.name}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/layout_marginHorizontal"
+                android:layout_marginVertical="@dimen/layout_marginVertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 </layout>

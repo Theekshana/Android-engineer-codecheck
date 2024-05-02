@@ -1,35 +1,120 @@
+<!-- String resources for the application -->
 <resources>
+    <!-- App name -->
     <string name="app_name">Android Engineer CodeCheck</string>
+
+    <!-- Search input hint -->
     <string name="searchInputText_hint">GitHub のリポジトリを検索できるよー</string>
-    <string name="written_language">Written in %s</string>
+
+    <!-- Retry button text -->
     <string name="retry">RETRY</string>
+
+    <!-- Error message for invalid input -->
     <string name="invalidInput">Please enter a valid input.</string>
+
+    <!-- Error message for no internet connection -->
     <string name="noInternetConnection">No internet connection</string>
+
+    <!-- Error message dialog title -->
     <string name="errorMessageDialog">errorMessageDialog</string>
+
+    <!-- Success message dialog title -->
+    <string name="successMessageDialog">successMessageDialog</string>
+
+    <!-- Navigation drawer menu item: Home -->
     <string name="homeFragment">Home</string>
+
+    <!-- Navigation drawer menu item: Details -->
     <string name="detailsFragment">Details</string>
+
+    <!-- Navigation drawer menu item: Favourites -->
     <string name="favouritesFragment">Favourites</string>
+
+    <!-- Navigation drawer menu item: Information -->
     <string name="appInfoFragment">Information</string>
-    <string name="stars">stars</string>
-    <string name="watchers">watchers</string>
-    <string name="forks">forks</string>
-    <string name="openIssues">open issues</string>
-    <string name="successfullyDeleted">Successfully deleted...</string>
+
+    <!-- GitHub repository detail: Stars -->
+    <string name="stars">Stars</string>
+
+    <!-- GitHub repository detail: Watchers -->
+    <string name="watchers">Watchers</string>
+
+    <!-- GitHub repository detail: Forks -->
+    <string name="forks">Forks</string>
+
+    <!-- GitHub repository detail: Open issues -->
+    <string name="openIssues">Open issues</string>
+
+    <!-- Success message for deletion -->
+    <string name="successfullyDeleted">Successfully deleted…</string>
+
+    <!-- Undo action -->
     <string name="undo">Undo</string>
+
+    <!-- Web page -->
     <string name="webPage">Web Page</string>
+
+    <!-- GitHub App -->
     <string name="gitHubApp">GitHub Repo Search App</string>
+
+    <!-- Welcome message -->
     <string name="txtWelcome">Welcome to the GitHub Repo Search App</string>
+
+    <!-- Features section heading -->
     <string name="features">Features</string>
+
+    <!-- Feature: Search Functionality -->
     <string name="searchFunction">1.Search Functionality</string>
+
+    <!-- Feature: Repository Details -->
     <string name="repoDetails">2.Repository Details</string>
-    <string name="webView">4.Web View Integration</string>
-    <string name="howToUse">How to Use:</string>
-    <string name="enterKeyword">Enter keywords in the search bar</string>
-    <string name="detailedInformation">Tap on a repository to view its detailed information</string>
-    <string name="saveRepository">Save repositories to your favourites list</string>
-    <string name="swipeToDelete">Swipe to delete repositories from favourites list if needed</string>
-    <string name="explore">Explore repository by opening web page</string>
-    <string name="note">Note:</string>
-    <string name="requiresInternetConnection">This app requires an internet connection</string>
+
+    <!-- Favourites section heading -->
     <string name="favourites">3.Favourites Repositories</string>
+
+    <!-- Feature: Web View Integration -->
+    <string name="webView">4.Web View Integration</string>
+
+    <!-- How to Use section heading -->
+    <string name="howToUse">How to Use:</string>
+
+    <!-- How to Use: Enter keywords in the search bar -->
+    <string name="enterKeyword">Enter keywords in the search bar</string>
+
+    <!-- How to Use: Tap on a repository to view its detailed information -->
+    <string name="detailedInformation">Tap on a repository to view its detailed information</string>
+
+    <!-- How to Use: Save repositories to your favourites list -->
+    <string name="saveRepository">Save repositories to your favourites list</string>
+
+    <!-- How to Use: Swipe to delete repositories from favourites list if needed -->
+    <string name="swipeToDelete">Swipe to delete repositories from favourites list if needed</string>
+
+    <!-- How to Use: Explore repository by opening web page -->
+    <string name="explore">Explore repository by opening web page</string>
+
+    <!-- Note section heading -->
+    <string name="note">Note:</string>
+
+    <!-- Note: This app requires an internet connection -->
+    <string name="requiresInternetConnection">This app requires an internet connection</string>
+
+    <!-- Success message for saving -->
+    <string name="savedSuccess">Saved Successfully…</string>
+
+    <!-- Home navigation item -->
+    <string name="home">Home</string>
+
+    <!-- Favourite navigation item -->
+    <string name="favourite">Favourite</string>
+
+    <!-- Info navigation item -->
+    <string name="info">Info</string>
+
+    <!-- Language prefix -->
+    <string name="language">Language : </string>
+
+    <!-- Button content description for saving repository -->
+    <string name="save_repository">Save Repository</string>
+
 </resources>

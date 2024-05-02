@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?><!-- This layout defines the landscape UI for the App Info Fragment -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ScrollView to allow scrolling if content exceeds screen size -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- ConstraintLayout as the main container -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".views.appInfo.AppInfoFragment">
+
+            <!-- TextView for the title -->
+            <TextView
+                android:id="@+id/txtTitle"
+                style="@style/txtLargeBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_view_margin_top"
+                android:text="@string/gitHubApp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- TextView for the welcome message -->
+            <TextView
+                android:id="@+id/txtWelcome"
+                style="@style/txtSmallBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_layout_margin_start"
+                android:layout_marginTop="@dimen/text_layout_margin_top"
+                android:layout_marginEnd="@dimen/text_view_margin"
+                android:text="@string/txtWelcome"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+            <!-- TextView for the features section -->
+            <TextView
+                android:id="@+id/txtFeatures"
+                style="@style/txtSmallBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_layout_margin_top"
+                android:text="@string/features"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/txtWelcome"
+                app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />
+
+            <!-- TextView for search feature -->
+            <TextView
+                android:id="@+id/txtSearch"
+                style="@style/txtSmallBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_layout_margin_start"
+                android:layout_marginTop="@dimen/text_layout_margin_top"
+                android:text="@string/searchFunction"
+                app:layout_constraintStart_toStartOf="@+id/txtFeatures"
+                app:layout_constraintTop_toBottomOf="@+id/txtFeatures" />
+
+            <!-- TextView for repository details feature -->
+            <TextView
+                android:id="@+id/txtRepoDetails"
+                style="@style/txtSmallBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_layout_margin_top"
+                android:text="@string/repoDetails"
+                app:layout_constraintStart_toStartOf="@+id/txtSearch"
+                app:layout_constraintTop_toBottomOf="@+id/txtSearch" />
+
+            <!-- TextView for favorites -->
+            <TextView
+                android:id="@+id/txtFav"
+                style="@style/txtSmallBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_layout_margin_top"
+                android:text="@string/favourites"
+                app:layout_constraintStart_toStartOf="@+id/txtRepoDetails"
+                app:layout_constraintTop_toBottomOf="@+id/txtRepoDetails" />
+
+            <!-- TextView for WebView feature -->
+            <TextView
+                android:id="@+id/textView7"
+                style="@style/txtSmallBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_layout_margin_top"
+                android:text="@string/webView"
+                app:layout_constraintStart_toStartOf="@+id/txtFav"
+                app:layout_constraintTop_toBottomOf="@+id/txtFav" />
+
+            <!-- TextView for how to use section -->
+            <TextView
+                android:id="@+id/textView8"
+                style="@style/txtSmallBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_layout_margin_top"
+                android:text="@string/howToUse"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+            <!-- TextView for enter keyword description -->
+            <TextView
+                android:id="@+id/textView9"
+                style="@style/txtSmallBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_layout_margin_start"
+                android:layout_marginTop="@dimen/text_layout_margin_top"
+                android:layout_marginEnd="@dimen/text_layout_margin_end"
+                android:text="@string/enterKeyword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <!-- TextView for detailed information feature -->
+            <TextView
+                android:id="@+id/textView10"
+                style="@style/txtSmallBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_layout_margin_top"
+                android:text="@string/detailedInformation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+            <!-- TextView for save repository feature -->
+            <TextView
+                android:id="@+id/textView11"
+                style="@style/txtSmallBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_layout_margin_top"
+                android:text="@string/saveRepository"
+                app:layout_constraintStart_toStartOf="@+id/textView10"
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+            <!-- TextView for swipe to delete feature -->
+            <TextView
+                android:id="@+id/textView12"
+                style="@style/txtSmallBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_layout_margin_top"
+                android:text="@string/swipeToDelete"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textView11"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <!-- TextView for explore feature -->
+            <TextView
+                android:id="@+id/textView13"
+                style="@style/txtSmallBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_layout_margin_top"
+                android:text="@string/explore"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textView12"
+                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+            <!-- TextView for note -->
+            <TextView
+                android:id="@+id/textView14"
+                style="@style/txtSmallBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_layout_margin_top"
+                android:text="@string/note"
+                app:layout_constraintStart_toStartOf="@+id/txtFeatures"
+                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+            <!-- TextView for internet connection requirement -->
+            <TextView
+                android:id="@+id/textView15"
+                style="@style/txtSmallBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_layout_margin_start"
+                android:layout_marginTop="@dimen/text_layout_margin_top"
+                android:text="@string/requiresInternetConnection"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textView14"
+                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

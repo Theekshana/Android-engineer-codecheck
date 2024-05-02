@@ -50,8 +50,11 @@ class HomeFragment : Fragment() {
             false
         ).apply {
             // Initialize ViewModel using ViewModelProvider
-            viewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
-            githubVM = viewModel
+            ViewModelProvider(requireActivity())[HomeViewModel::class.java].apply {
+                viewModel = this
+                githubVM = this
+            }
+            // Setting the lifecycle owner for data binding
             lifecycleOwner = this@HomeFragment
         }
 
@@ -64,7 +67,15 @@ class HomeFragment : Fragment() {
         // Initialize the RecyclerView for displaying GitHub repositories
         initializeGitHubRepositoryAdapter()
 
-        // Observe GitHub accounts LiveData and update UI accordingly
+        // Observe GitHub accounts
+        observeGitHubAccounts()
+
+    }
+
+    /**
+     * Observes the LiveData for GitHub accounts and updates the UI accordingly.
+     */
+    private fun observeGitHubAccounts() {
         lifecycleScope.launch {
             binding.apply {
                 viewModel.githubAccounts.observe(viewLifecycleOwner) {
@@ -87,7 +98,6 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-
     }
 
     /**
@@ -199,7 +209,7 @@ class HomeFragment : Fragment() {
      * @param message The error message to be displayed.
      */
     private fun showErrorMessageDialog(message: String) {
-        val dialogFragment = ErrorMessageDialogFragment.newInstance(message)
+        val dialogFragment = ErrorMessageDialogFragment.newInstance(message, true)
         dialogFragment.show(childFragmentManager, getString(R.string.errorMessageDialog))
     }
 

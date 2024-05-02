@@ -55,13 +55,13 @@ dependencies {
     def logging_interceptor_version = '4.12.0'
     def junit_version = '4.13.2'
     def test_ext_junit_version = '1.1.5'
-    def test_espresso_version = '3.5.1'
     def mockito_version = '5.10.0'
-    def lottie_version = '3.5.0'
+    def lottie_version = '4.1.0'
     def glide_version = '4.16.0'
     def androidx_room_version = '2.6.1'
     def coroutines_test_version = '1.7.3'
     def androidx_arch_core_test_version = '2.2.0'
+    def splashscreen_version = '1.0.1'
 
     // ——— Common AndroidX libraries ———++
     implementation "androidx.core:core-ktx:$androidx_core_ktx_version"
@@ -94,7 +94,6 @@ dependencies {
     //  ——— Testing ——— ++
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$test_ext_junit_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$test_espresso_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test_version"
     testImplementation "androidx.arch.core:core-testing:$androidx_arch_core_test_version"
 
@@ -117,6 +116,9 @@ dependencies {
     ksp "androidx.room:room-compiler:$androidx_room_version"
     implementation "androidx.room:room-ktx:$androidx_room_version"
     androidTestImplementation "androidx.room:room-testing:$androidx_room_version"
+
+    //  ———  Splash Screen  ——— ++
+    implementation "androidx.core:core-splashscreen:$splashscreen_version"
 
 
 }

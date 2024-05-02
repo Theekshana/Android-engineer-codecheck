@@ -4,7 +4,6 @@
 package jp.co.yumemi.android.code_check.views.repositorydetails
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
+import jp.co.yumemi.android.code_check.R
+import jp.co.yumemi.android.code_check.common.ErrorMessageDialogFragment
 import jp.co.yumemi.android.code_check.databinding.FragmentRepoDetailsBinding
 import jp.co.yumemi.android.code_check.model.GitHubAccount
 import jp.co.yumemi.android.code_check.views.favourite.FavoritesViewModel
@@ -47,8 +48,10 @@ class GitHubRepoDetailsFragment : Fragment() {
             false
         ).apply {
             // Initialize ViewModel using ViewModelProvider
-            viewModel = ViewModelProvider(this@GitHubRepoDetailsFragment)[GitHubRepoDetailsViewModel::class.java]
-            favoritesViewModel = ViewModelProvider(this@GitHubRepoDetailsFragment)[FavoritesViewModel::class.java]
+            viewModel =
+                ViewModelProvider(this@GitHubRepoDetailsFragment)[GitHubRepoDetailsViewModel::class.java]
+            favoritesViewModel =
+                ViewModelProvider(this@GitHubRepoDetailsFragment)[FavoritesViewModel::class.java]
 
             // Extract repository details from arguments
             selectedRepository = args.repository
@@ -67,16 +70,36 @@ class GitHubRepoDetailsFragment : Fragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Initialize repository details
         setupRepositoryDetails()
+
+        // Set up save button functionality
         setupSaveButton()
 
     }
 
+    /**
+     * Sets up the click listener for the save button.
+     * When the button is clicked, it saves the selected repository as a favorite using the
+     * [favoritesViewModel] and displays a success message.
+     */
     private fun setupSaveButton() {
         binding.btnFabSaveRepository.setOnClickListener {
             favoritesViewModel.saveFavoriteAccount(selectedRepository)
-            Log.d("Room", "Data: $selectedRepository")
+            // Show success message after saving
+            showSuccessMessage(getString(R.string.savedSuccess))
         }
+    }
+
+    /**
+     * Shows a success or error message dialog.
+     *
+     * @param message The message to display in the dialog.
+     */
+    private fun showSuccessMessage(message: String) {
+        // Create and show a dialog fragment based on the provided message and error flag
+        val dialogFragment = ErrorMessageDialogFragment.newInstance(message, false)
+        dialogFragment.show(childFragmentManager, getString(R.string.successMessageDialog))
     }
 
     /**
