@@ -75,7 +75,7 @@ class ErrorMessageDialogFragment : DialogFragment() {
                 with(binding) {
                     imgSuccessOrError.apply {
                         setImageResource(R.drawable.ic_error)
-                        txtInvalidUserInput.text = message
+                        txtSuccessOrErrorMessage.text = message
                         btnOk.setOnClickListener { dismiss() }
                     }
 
@@ -87,7 +87,7 @@ class ErrorMessageDialogFragment : DialogFragment() {
                 with(binding) {
                     imgSuccessOrError.apply {
                         setImageResource(R.drawable.ic_success)
-                        txtInvalidUserInput.text = message
+                        txtSuccessOrErrorMessage.text = message
                         btnOk.visibility = View.GONE
                     }
                     // Dismiss the dialog after 2 seconds

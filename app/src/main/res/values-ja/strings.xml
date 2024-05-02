@@ -115,4 +115,8 @@
     <!-- Language prefix -->
     <string name="language">言語 : </string>
 
+    <!-- Button content description for saving repository -->
+    <string name="save_repository">リポジトリを保存する</string>
+
+
 </resources>

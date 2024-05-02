@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!-- Data binding layout root element -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Data variable for binding -->
     <data>
 
         <variable
@@ -10,11 +11,13 @@
             type="jp.co.yumemi.android.code_check.views.home.HomeViewModel" />
     </data>
 
+    <!-- Main ConstraintLayout container -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activities.MainActivity">
 
+        <!-- MaterialCardView for search bar -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/searchBar"
             android:layout_width="0dp"
@@ -27,6 +30,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <!-- TextInputLayout for search input -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/searchInputLayout"
                 style="@style/TextInputLayoutNoBorder"
@@ -43,6 +47,7 @@
                 app:startIconDrawable="@android:drawable/ic_menu_search"
                 app:startIconTint="@android:color/darker_gray">
 
+                <!-- TextInputEditText for search input -->
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/searchInputText"
                     style="@style/txtLarge"
@@ -58,6 +63,7 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- RecyclerView to display search results -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchResultsRecyclerView"
             android:layout_width="0dp"
@@ -67,6 +73,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/searchBar" />
 
+        <!-- LottieAnimationView for progress indicator -->
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieProgressBar"
             android:layout_width="wrap_content"

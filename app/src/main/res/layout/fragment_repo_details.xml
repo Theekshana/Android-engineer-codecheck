@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!-- Data binding layout root element -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Data variable for binding -->
     <data>
 
         <variable
@@ -10,10 +11,12 @@
             type="jp.co.yumemi.android.code_check.views.repositorydetails.GitHubRepoDetailsViewModel" />
     </data>
 
+    <!-- Main ConstraintLayout container -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- ImageView for repository owner's icon -->
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ownerIconView"
             android:layout_width="0dp"
@@ -32,6 +35,7 @@
             app:strokeWidth="@dimen/round_image_stroke_width"
             tools:srcCompat="@tools:sample/avatars" />
 
+        <!-- Guideline for centering horizontally -->
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/centerHorizontalCenterGuide"
             android:layout_width="wrap_content"
@@ -39,7 +43,7 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.35" />
 
-
+        <!-- CardView for displaying repository language -->
         <androidx.cardview.widget.CardView
             android:id="@+id/languageCardView"
             android:layout_width="match_parent"
@@ -51,10 +55,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ownerIconView">
 
+            <!-- Nested ConstraintLayout for language details -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <!-- TextView for repository name -->
                 <TextView
                     android:id="@+id/nameView"
                     style="@style/txtLargeBold"
@@ -63,11 +69,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/name_view_text_margin_top"
                     android:gravity="center"
-                    android:text="@{repoDetails.repositoryDetails.name}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <!-- TextView for repository language -->
                 <TextView
                     android:id="@+id/languageView"
                     style="@style/txtLargeBold"
@@ -83,6 +89,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- CardView for displaying repository stars count -->
         <androidx.cardview.widget.CardView
             android:id="@+id/starsCardView"
             android:layout_width="@dimen/card_view_layout_width_"
@@ -124,6 +131,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- CardView for displaying repository watchers count -->
         <androidx.cardview.widget.CardView
             android:id="@+id/txtWatchersCardView"
             android:layout_width="@dimen/card_view_layout_width_"
@@ -166,6 +174,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- CardView for displaying repository forks count -->
         <androidx.cardview.widget.CardView
             android:id="@+id/txtForksCardView"
             android:layout_width="@dimen/card_view_layout_width_"
@@ -209,6 +218,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- CardView for displaying repository open issues count -->
         <androidx.cardview.widget.CardView
             android:id="@+id/txtOpenIssuesCardView"
             android:layout_width="@dimen/card_view_layout_width_"
@@ -252,13 +262,14 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- FloatingActionButton for saving repository -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnFabSaveRepository"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/fab_layout_margin_top"
             android:backgroundTint="@color/dark_red"
-            android:contentDescription="TODO"
+            android:contentDescription="@string/save_repository"
             android:src="@drawable/ic_save"
             app:layout_constraintEnd_toEndOf="@+id/txtOpenIssuesCardView"
             app:layout_constraintHorizontal_bias="1.0"
@@ -267,6 +278,7 @@
             app:tint="@color/red"
             tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
 
+        <!-- Guideline for centering vertically -->
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"

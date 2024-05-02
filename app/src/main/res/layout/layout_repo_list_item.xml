@@ -2,12 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Data binding variable for GitHub account -->
     <data>
 
         <variable
             name="githubAccount"
             type="jp.co.yumemi.android.code_check.model.GitHubAccount" />
     </data>
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -31,7 +33,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/layout_marginHorizontal"
                 android:layout_marginVertical="@dimen/layout_marginVertical"
-                android:text="@{githubAccount.name}"
                 shortName="@{githubAccount.name}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

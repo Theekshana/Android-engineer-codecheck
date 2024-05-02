@@ -114,4 +114,7 @@
     <!-- Language prefix -->
     <string name="language">Language : </string>
 
+    <!-- Button content description for saving repository -->
+    <string name="save_repository">Save Repository</string>
+
 </resources>

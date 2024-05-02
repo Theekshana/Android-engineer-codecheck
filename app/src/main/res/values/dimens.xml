@@ -26,6 +26,7 @@
 
     /* Layout Favorite List Item */
     <dimen name="list_card_view_corner_radius">12dp</dimen>
+    <dimen name="card_view_layout_margin">5dp</dimen>
     <dimen name="round_image_stroke_width">0.1dp</dimen>
     <dimen name="round_image_height_width">80dp</dimen>
     <dimen name="round_image_layout_margin_start">8dp</dimen>
@@ -65,6 +66,8 @@
     <dimen name="text_view_margin">8dp</dimen>
     <dimen name="text_view_margin_top">16dp</dimen>
 
-
+    /* Floating Action Button */
+    <dimen name="fab_layout_margin_top">8dp</dimen>
+    <dimen name="fab_layout_margin_bottom">4dp</dimen>
 
 </resources>
