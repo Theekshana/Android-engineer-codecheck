@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- This is the layout file for displaying an error or success message with a button -->
+<?xml version="1.0" encoding="utf-8"?><!-- This is the layout file for displaying an error or success message with a button -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">

@@ -1,6 +1,5 @@
 package jp.co.yumemi.android.code_check.views.repositorydetails
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,8 +14,8 @@ import javax.inject.Inject
 class GitHubRepoDetailsViewModel @Inject constructor() : ViewModel() {
 
     // LiveData to hold the repository details
-    private val _repositoryDetails = MutableLiveData<GitHubAccount>(null)
-    val repositoryDetails: LiveData<GitHubAccount> get() = _repositoryDetails
+    private val _repositoryDetails = MutableLiveData<GitHubAccount?>()
+    val repositoryDetails: MutableLiveData<GitHubAccount?> get() = _repositoryDetails
 
     /**
      * Updates the [_repositoryDetails] LiveData with the provided GitHubAccount object.

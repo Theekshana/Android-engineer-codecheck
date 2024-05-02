@@ -18,7 +18,7 @@ import jp.co.yumemi.android.code_check.databinding.ErrorDialogFragmentLayoutBind
  */
 class ErrorMessageDialogFragment : DialogFragment() {
 
-    // View binding for the layout
+    // Data binding for the layout
     private lateinit var binding: ErrorDialogFragmentLayoutBinding
 
     companion object {

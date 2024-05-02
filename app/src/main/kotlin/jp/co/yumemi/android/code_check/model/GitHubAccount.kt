@@ -7,7 +7,6 @@ import com.google.gson.annotations.SerializedName
 import jp.co.yumemi.android.code_check.constants.Constants.GITHUB_REPOSITORY_TABLE
 import kotlinx.parcelize.Parcelize
 
-
 /**
  * Represents a GitHub repository account.
  *
@@ -20,7 +19,6 @@ import kotlinx.parcelize.Parcelize
  * @property forksCount The number of forks for the repository.
  * @property openIssuesCount The number of open issues for the repository.
  */
-
 @Entity(tableName = GITHUB_REPOSITORY_TABLE)
 @Parcelize
 data class GitHubAccount(

@@ -32,11 +32,11 @@
             <TextView
                 android:id="@+id/repositoryNameView"
                 style="@style/txtLargeBold"
+                shortName="@{githubAccount.name}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/layout_marginHorizontal"
                 android:layout_marginVertical="@dimen/layout_marginVertical"
-                shortName="@{githubAccount.name}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

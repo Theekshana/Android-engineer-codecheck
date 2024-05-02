@@ -78,6 +78,11 @@ class GitHubRepoDetailsFragment : Fragment() {
 
     }
 
+    /**
+     * Sets up the click listener for the save button.
+     * When the button is clicked, it saves the selected repository as a favorite using the
+     * [favoritesViewModel] and displays a success message.
+     */
     private fun setupSaveButton() {
         binding.btnFabSaveRepository.setOnClickListener {
             favoritesViewModel.saveFavoriteAccount(selectedRepository)
