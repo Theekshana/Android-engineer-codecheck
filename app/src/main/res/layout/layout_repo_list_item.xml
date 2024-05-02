@@ -10,22 +10,25 @@
             type="jp.co.yumemi.android.code_check.model.GitHubAccount" />
     </data>
 
-
+    <!-- CardView to display repository information -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/card_view_margin"
         android:background="?attr/selectableItemBackground"
         android:padding="@dimen/card_view_padding"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/card_corner_radius"
         app:cardElevation="@dimen/card_elevation"
         app:cardUseCompatPadding="true"
         app:layout_constraintDimensionRatio="1:1">
 
+        <!-- ConstraintLayout to hold the views -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <!-- TextView to display the repository name -->
             <TextView
                 android:id="@+id/repositoryNameView"
                 style="@style/txtLargeBold"

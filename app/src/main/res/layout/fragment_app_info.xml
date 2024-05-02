@@ -25,7 +25,7 @@
         <!-- TextView for welcome message -->
         <TextView
             android:id="@+id/txtWelcome"
-            style="@style/txtSmall"
+            style="@style/txtSmallBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_layout_margin_start"
@@ -53,7 +53,7 @@
         <!-- TextView for search feature -->
         <TextView
             android:id="@+id/txtSearch"
-            style="@style/txtSmall"
+            style="@style/txtSmallBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_layout_margin_start"
@@ -65,7 +65,7 @@
         <!-- TextView for repository details feature -->
         <TextView
             android:id="@+id/txtRepoDetails"
-            style="@style/txtSmall"
+            style="@style/txtSmallBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/text_layout_margin_top"
@@ -76,7 +76,7 @@
         <!-- TextView for favorites feature -->
         <TextView
             android:id="@+id/txtFav"
-            style="@style/txtSmall"
+            style="@style/txtSmallBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/text_layout_margin_top"
@@ -87,7 +87,7 @@
         <!-- TextView for WebView feature -->
         <TextView
             android:id="@+id/textView7"
-            style="@style/txtSmall"
+            style="@style/txtSmallBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/text_layout_margin_top"
@@ -110,7 +110,7 @@
         <!-- TextView for enter keyword description -->
         <TextView
             android:id="@+id/textView9"
-            style="@style/txtSmall"
+            style="@style/txtSmallBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_layout_margin_start"
@@ -125,7 +125,7 @@
         <!-- TextView for detailed information feature -->
         <TextView
             android:id="@+id/textView10"
-            style="@style/txtSmall"
+            style="@style/txtSmallBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/text_layout_margin_top"
@@ -138,7 +138,7 @@
         <!-- TextView for save repository feature -->
         <TextView
             android:id="@+id/textView11"
-            style="@style/txtSmall"
+            style="@style/txtSmallBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/text_layout_margin_top"
@@ -149,7 +149,7 @@
         <!-- TextView for swipe to delete feature -->
         <TextView
             android:id="@+id/textView12"
-            style="@style/txtSmall"
+            style="@style/txtSmallBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/text_layout_margin_top"
@@ -162,7 +162,7 @@
         <!-- TextView for explore feature -->
         <TextView
             android:id="@+id/textView13"
-            style="@style/txtSmall"
+            style="@style/txtSmallBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/text_layout_margin_top"
@@ -186,7 +186,7 @@
         <!-- TextView for internet connection requirement -->
         <TextView
             android:id="@+id/textView15"
-            style="@style/txtSmall"
+            style="@style/txtSmallBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_layout_margin_start"

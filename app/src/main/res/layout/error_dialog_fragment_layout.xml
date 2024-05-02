@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:background="@color/white"
         android:paddingStart="@dimen/layout_padding_start"
         android:paddingTop="@dimen/layout_padding_top"
         android:paddingEnd="@dimen/layout_padding_end"
@@ -17,6 +18,7 @@
         <!-- ImageView for displaying success or error icon -->
         <ImageView
             android:id="@+id/imgSuccessOrError"
+            style="@style/txtLarge"
             android:layout_width="@dimen/image_layout_width"
             android:layout_height="@dimen/image_layout_height"
             android:layout_marginTop="@dimen/image_layout_margin_top"

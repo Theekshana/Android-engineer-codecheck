@@ -44,7 +44,7 @@
             <!-- TextView for displaying the repository name -->
             <TextView
                 android:id="@+id/txtName"
-                style="@style/txtName"
+                style="@style/txtLargeBold"
                 shortName="@{repository.name}"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
