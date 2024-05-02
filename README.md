@@ -4,6 +4,8 @@
 
 GitHub Repository Explorer is a user-friendly application that allows users to search for GitHub repositories based on their interests. With intuitive search functionality, users can easily discover repositories and access detailed information about each one, including description, owner, stars, forks, and more.
 
+https://github.com/Theekshana/Android-engineer-codecheck/assets/460929/b683549d-1b57-4f0e-a850-7d4d36b7a0f0
+
 ## Features
 
 ## Search Functionality:
