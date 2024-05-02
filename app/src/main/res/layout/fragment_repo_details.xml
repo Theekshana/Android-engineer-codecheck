@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/language_view_text_view_margin_top_"
                     android:layout_marginBottom="@dimen/language_view_text_view_margin_bottom_"
-                    android:text="@{`Language: ` + repoDetails.repositoryDetails.language}"
+                    android:text="@{@string/language + repoDetails.repositoryDetails.language}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/nameView"
                     app:layout_constraintStart_toStartOf="@+id/nameView"
