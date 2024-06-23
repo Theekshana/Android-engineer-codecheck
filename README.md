@@ -1,4 +1,4 @@
-# Yumemi Co., Ltd. Android Engineer Code Check
+# Android Engineer Code Check
 
 ## Summary
 
